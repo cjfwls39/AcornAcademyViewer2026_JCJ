@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid예제</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .parents {
+        display: grid;
+        grid-template-columns: repeat(3, 35%);
+        grid-gap: 20px 15px;
+      }
+
+      .parents > div {
+        border: 1px solid black;
+        padding: 50px;
+      }
+
+      img {
+        display: block;
+        margin: auto;
+        width: 250px;
+        height: 200px;
+      }
+
+      p{
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      h4{
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parents">
+      <div class="cup1">
+        <h4>cup1 images</h4>
+        <img src="../images/cup1.jpg" alt="" />
+        <p>1번 컵</p>
+      </div>
+
+      <div class="cup2">
+        <h4>cup2 images</h4>
+        <img src="../images/cup2.jpg" alt="" />
+        <p>2번 컵</p>
+      </div>
+      
+      <div class="cup3">
+        <h4>cup3 images</h4>
+        <img src="../images/cup3.jpg" alt="" />
+        <p>3번 컵</p>
+      </div>
+
+      <div class="cup4">
+        <h4>cup4 images</h4>
+        <img src="../images/cup4.png" alt="" />
+        <p>4번 컵</p>
+      </div>
+
+      <div class="cup5">
+        <h4>cup5 images</h4>
+        <img src="../images/cup5.jpg" alt="" />
+        <p>5번 컵</p>
+      </div>
+
+      <div class="cup5">
+        <h4>cup6 images</h4>
+        <img src="../images/cup6.jpg" alt="" />
+        <p>6번 컵</p>
+      </div>
+    </div>
+  </body>
+</html>

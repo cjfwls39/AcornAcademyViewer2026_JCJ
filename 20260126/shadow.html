@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shadow</title>
+
+    <style>
+      h1 {
+        font-size: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .shadow1 {
+        color: olive;
+        text-shadow: 20px 20px 20px gray;
+        /* 가로, 세로, 번짐정도, 색상 */
+      }
+
+      .shadow2 {
+        color: blue;
+        text-shadow: 3px 3px;
+      }
+
+      .shadow3 {
+        color: aliceblue;
+        text-shadow: 7px -7px 5px gray;
+      }
+
+      .shadow4 {
+        color: aquamarine;
+        text-shadow:
+          0 0 4px lightgrey,
+          2px -10px 6px yellow,
+          2px -19px 18px red,
+          2px -19px 18px orange;
+        /* 여러개 넣는것도 가능 */
+      }
+
+      .WordArtEffect {
+        color: white;
+        text-shadow: 0px 0px 3px darkblue;
+      }
+
+      .threeDEffect {
+        color: white;
+        text-shadow: 2px 2px 4px black;
+      }
+
+      .multiEffect {
+        color: white;
+        text-shadow:
+          2px 2px 4px black,
+          0 0 25px blue,
+          0 0 5px darkblue;
+      }
+
+      .redBox{
+        box-shadow: 10px 10px red;
+        width: 150px;
+        height: 70px;
+        padding: 10px;
+        border: 10px solid lightgray;
+        background-image: url(../images/happy.png);
+        
+        /* 배경이미지 사이즈 조절 */
+        background-size: 200px 90px;
+        /* 배경이미지 반복 안함 */
+        background-repeat: no-repeat;
+      }
+
+      .blueBox{
+        border: 10px solid lightgray;
+        padding: 10px;
+        width: 150px;
+        height: 70px;
+        box-shadow: 10px 10px 5px blue;
+
+        background-image: url(../images/happy.png);
+        background-size: 200px 90px;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="shadow1">HTML5</h1>
+    <h1 class="shadow2">HTML5</h1>
+    <h1 class="shadow3">HTML5</h1>
+    <h1 class="shadow4">HTML5</h1>
+
+    <div class="WordArtEffect">WordArt Effect</div>
+    <div class="threeDEffect">3D Effect</div>
+    <div class="multiEffect">Multiple Shadow Effect</div>
+
+    <hr>
+    <h3>박스 그림자 만들기</h3>
+    <div class="redBox">뚱이와 함께</div>
+    <div class="blueBox">뚱이와 함께</div>
+    <div class="multiEffect">뚱이와 함께</div>
+
+    <hr>
+    <h3>마우스 커서</h3>
+    <p style="cursor: crosshair;">십자 모양 커서</p>
+    <p style="cursor: pointer;">포인터 모양 커서</p>
+    <p style="cursor: help;">도움말 모양 커서</p>
+    <p style="cursor: progress;">프로그램 실행 중 모양 커서</p>
+    <p style="cursor: n-resize;">상하 크기 조절 모양 커서</p>
+  </body>
+</html>

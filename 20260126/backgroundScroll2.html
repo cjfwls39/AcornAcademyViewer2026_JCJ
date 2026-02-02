@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>backgroundScroll2</title>
+
+    <style>
+      * {
+        /* 와일드 카드 문자[*] : 전체 선택 */
+        margin: 0;
+        scroll-behavior: smooth;
+      }
+
+      h3 {
+        font-size: 70px; /* 폰트 크기 */
+        font-weight: 800; /* 글자 두께 */
+        line-height: 700px; /* 줄 간격 */
+        text-align: center;
+        color: aliceblue;
+      }
+
+      .container{
+        width: 100%;
+        height: 100vh; /* 보이는 범위만큼 */
+        margin: 0 auto;
+      }
+
+      .section1 {
+        height: 700px;
+        background: url(../images/beach.jpg) no-repeat 50% 0 / cover fixed;
+        /* background-size: cover; */
+        /* 50% 0 : x축 50% , y축 0 */
+        /* ==> x축 50%(가운데) / y축 0(top 맨 위에)*/
+        /* background-attachment: fixed; => 따로 사용할때는 이렇게 */
+      }
+      .section2 {
+        height: 700px;
+        background: url(../images/city.jpg) no-repeat 50% 0 scroll;
+        background-size: cover;
+      }
+      .section3 {
+        height: 700px;
+        background: url(../images/coffee.jpg) no-repeat 50% 0 fixed;
+        background-size: cover;
+      }
+      .section4 {
+        height: 700px;
+        background: url(../images/moon.jpg) no-repeat 50% 0 fixed;
+        background-size: cover;
+      }
+
+      a {
+        display: inline;
+        border: 2px solid black;
+        text-decoration: none;
+        color: white;
+        background-color: black;
+        padding: 10px 50px;
+      }
+
+      a:hover {
+        background-color: lightgray;
+        color: black;
+      }
+
+      /* nav */
+      nav {
+        height: 70px;
+        border: 1px solid red;
+        text-align: center;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        display: inline;
+        border: solid 2px black;
+      }
+
+      li:hover {
+        background-color: lightgray;
+        color: whitesmoke;
+      }
+
+      a {
+        text-decoration: none; /* a태그 기본 꾸미기 속성을 없애줌 */
+        color: white;
+      }
+
+      a:hover {
+        color: black;
+      }
+
+      /* grid */
+      .parents {
+        display: grid;
+        grid-template-columns: repeat(3, 32%);
+        grid-gap: 20px 15px;
+        font-weight: bold;
+        color: red;
+
+        height: 300px;
+      }
+
+      .parents > div {
+        border: 1px solid black;
+        padding: 20px;
+        background-color: aqua;
+      }
+
+      img {
+        display: block;
+        margin: auto;
+        width: 250px;
+        height: 200px;
+      }
+
+      p {
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      h4 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="section1" id="section1">
+        <nav>
+          <ul>
+            <li><a href="#section1">메인화면</a></li>
+            <li><a href="#section2">기록실</a></li>
+            <li><a href="#section3">로그인</a></li>
+            <li><a href="#section4">회원가입</a></li>
+          </ul>
+        </nav>
+
+        <h3>WEB FRONTEND</h3>
+      </section>
+      <section class="section2" id="section2">
+        <div class="parents">
+          <div class="cup1">
+            <h4>cup1 images</h4>
+            <img src="../images/cup1.jpg" alt="" />
+            <p>1번 컵</p>
+          </div>
+
+          <div class="cup2">
+            <h4>cup2 images</h4>
+            <img src="../images/cup2.jpg" alt="" />
+            <p>2번 컵</p>
+          </div>
+
+          <div class="cup3">
+            <h4>cup3 images</h4>
+            <img src="../images/cup3.jpg" alt="" />
+            <p>3번 컵</p>
+          </div>
+
+          <div class="cup4">
+            <h4>cup4 images</h4>
+            <img src="../images/cup4.png" alt="" />
+            <p>4번 컵</p>
+          </div>
+
+          <div class="cup5">
+            <h4>cup5 images</h4>
+            <img src="../images/cup5.jpg" alt="" />
+            <p>5번 컵</p>
+          </div>
+
+          <div class="cup5">
+            <h4>cup6 images</h4>
+            <img src="../images/cup6.jpg" alt="" />
+            <p>6번 컵</p>
+          </div>
+        </div>
+
+        <h3>WEB FRONTEND</h3>
+      </section>
+      <section class="section3" id="section3">
+        <h3>WEB FRONTEND</h3>
+      </section>
+      <section class="section4" id="section4">
+        <h3>WEB FRONTEND</h3>
+        <a href="#" class="top">맨 위로</a>
+      </section>
+    </div>
+  </body>
+</html>

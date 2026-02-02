@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border 테두리 관련 속성</title>
+
+    <style>
+        div{
+            border: 1px solid salmon;
+            width: 200px;
+            height: 120px;
+        }
+
+        .box1{
+            border-color: blue; /* 테두리 색상 */
+            border-width: 5px; /* 네 방향 모두 굵기(두께) */
+            border-style: dashed; /* 테두리 스타일 */
+            /* dashed. dotted, double(이중선). groove, inset, outset */
+        }
+
+        .box2{
+            border-color: darkseagreen;
+            border-width: thick thin; /* 위아래 두껍게, 좌우 가늘게 */
+            border-style: double;
+            margin: 15px;
+        }
+
+        .box3{
+            border-color: red;
+            border-width: 5px 20px 1px; /* 위, 좌우, 아래 */
+        }
+
+        .box4{
+            border-style: outset;
+            border-width: 10px 6px 7px 2px; /* 시계방향 12시부터(상->우->하->좌) */
+            border-left-color: pink;
+            border-right-color: blueviolet;
+            border-bottom-color: yellowgreen;
+        }
+
+        /* round ▼ */
+
+        .round1{
+            width: 300px;
+            height: 200px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 70px;
+            border-bottom-left-radius: 50px;
+        }
+
+        .round2{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: pink;
+        }
+
+        .round3{
+            width: 150px;
+            height: 150px;
+            background-color: lightblue;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+
+    <!-- round -->
+     <div class="round1">첫번째</div>
+     <div class="round2">두번째</div>
+     <div class="round3">세번째</div>
+</body>
+</html>

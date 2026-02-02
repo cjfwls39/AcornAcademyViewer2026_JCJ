@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입 폼 예제</title>
+  <link rel="stylesheet" href="naver_form.css">
+</head>
+<body>
+  <main>
+<h1>회원가입</h1>
+<form>
+
+  <h2>생년월일</h2>
+  <div class="row">
+    <input type="text" placeholder="년(4자)">
+    <select>
+      <option>월</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+    <input type="text" placeholder="일">
+  </div>
+
+  <h2>성별</h2>
+    <label><input class="gender" type="radio" name="gender"> 남자</label>
+    <label><input class="gender" type="radio" name="gender"> 여자</label>
+    <label><input class="gender" type="radio" name="gender"> 선택안함</label>
+ 
+
+  <h2>이메일 (선택)</h2>
+  <input class="email" type="email" placeholder="example@email.com">
+
+  <h2>휴대전화</h2>
+
+    <select class="nation">
+      <option>대한민국 +82</option>
+    </select>
+    <input class="tel" type="tel" placeholder="전화번호 입력">
+    <button type="button" class="auth-btn">인증번호 받기</button>
+    <input class="ver" type="text" placeholder="인증번호를 입력하세요">
+    <button type="submit" class="submit-btn">가입하기</button>
+</form>
+
+<p class="footer-text">
+  이용약관 | 개인정보처리방침 | 고객센터<br>
+  © 2026 Sample Corp.
+</p>
+</main>
+</body>
+</html>

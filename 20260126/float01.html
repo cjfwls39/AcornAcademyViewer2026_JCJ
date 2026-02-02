@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float01</title>
+
+    <style>
+        .box1{
+            background-color: yellowgreen;
+            float: left; /* 왼쪽으로 플로팅 */
+            /* float로 배치할 경우 기본 margin, padding이 없다. */
+            /* 필요시 지정해서 사용한다. */
+        }
+        .box2{
+            background-color: pink;
+            float: right; /* 오른쪽으로 플로팅 */
+        }
+        .box3{
+            background-color: purple;
+        }
+        .box4{
+            background-color: aquamarine;
+            clear: both; /* 플로팅 양쪽 해제 */
+            /*
+                그 다음에 넣는 다른 요소에도 똑같은 속성이 전달된다
+                따라서 float를 사용하면 clear를 해준다
+
+                clear: left; 플로팅 왼쪽 해제
+                clear: right; 플로팅 오른쪽 해제
+            */
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+</body>
+</html>

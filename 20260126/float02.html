@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float를 활용한 배치, 시멘틱 태그</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            width: 1100px;
+            border: 1px solid;
+        }
+
+        header{
+            background-color: aquamarine;
+            height: 130px;
+        }
+
+        aside{
+            background-color: pink;
+            width: 300px;
+            height: 500px;
+            float: left; /* 다른 내용들이 따라서 올라간다. */
+        }
+
+        section{
+            background-color: yellowgreen;
+            width: 800px; /* 900으로 하면 사이즈 안맞음(초과됨) */
+            height: 500px;
+            float: right;
+        }
+
+        footer{
+            background-color: green;
+            height: 80px;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header>
+            <h1>사이트 로고</h1>
+        </header>
+
+        <aside>
+            <h2>사이트 영역</h2>
+        </aside>
+
+        <section>
+            <h3>오른쪽 영역</h3>
+            검색 엔지이 좋아하는 웹 페이지, 이멘틱 웹
+            웹 문서를 구조화 하여 의미 있는 내용 탐색이 용이한 웹을
+            시멘틱 웹 semantic web이라고 하며 시멘틱 태그에는
+            header, section, article, main, summary, mark, time등이 있다.
+            <hr>
+            <figure id="1-1">
+                <figcaption>alert() 함수 활용</figcaption>
+                <pre>
+                    <code>
+                        fuction f() alert("경고합니다");
+                    </code>
+                </pre>
+                <hr>
+                <small>실행 결과</small>
+                <pre>
+                    <img width="500px" src="https://blog.kakaocdn.net/dna/bmaI8k/btrHCZyldHV/AAAAAAAAAAAAAAAAAAAAAF4iztHnyH67oj8M7qp-lf2TBx8UKbKwSPSGAqvOcwJv/img.png?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1769871599&allow_ip=&allow_referer=&signature=4CQNmKjRnkiY0LdY5B2ThYIuWUg%3D" alt="">
+                </pre>
+            </figure>
+            <hr>
+            <details>
+                <summary>Question 1</summary>
+                <p>웹 개발자가 알아야 하는 언어 3가지?</p>
+            </details>
+            <details>
+                <summary>Answer 1</summary>
+                <p>HTML5, CSS3, JavaScript</p>
+            </details>
+        </section>
+        
+        <footer>
+            <h4>푸터</h4>
+        </footer>
+    </div>
+</body>
+</html>

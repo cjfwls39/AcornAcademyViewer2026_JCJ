@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box-sizing 박스 모델의 너비 결정하기</title>
+
+    <style>
+        div{
+            width: 300px;
+            height: 150px;
+            border: 2px solid red;
+        }
+
+        .box1{
+            box-sizing: content-box;
+            /* 콘텐츠 영역 기준 (실제 너비 364) */
+
+            padding: 30px; /* 안쪽 여백 */
+            margin: 10px;  /* 바깥 여백 */
+        }
+
+        .box2{
+            box-sizing: border-box;
+            /* 가로사이즈에 테두리까지 포함 */
+
+            padding: 30px; /* 안쪽 여백 */
+            margin: 10px;  /* 바깥 여백 */
+        }
+    </style>
+</head>
+<body>
+    <h1>box-sizing 박스 모델의 너비 결정하기</h1>
+    <div class="box1">box-sizing = "content-box" 기본값</div>
+    <div class="box2">box-sizing = "boder-box"</div>
+</body>
+</html>

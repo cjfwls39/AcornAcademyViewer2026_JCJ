@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+
+    <style>
+        section{
+            width: 1000px;
+            height: 400px;
+            border: 1px solid black;
+            background-image: url(../images/jeju.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 100% 50%;
+        }
+
+        /* 
+            background-repeat: no-repeat; : 배경 반복X
+            background-repeat: repeat-x; : 가로로 이미지 반복
+            background-repeat: repeat-y; : 세로로 이미지 반복
+
+            background-position: center; : 가운데로
+            background-position: right bottom; : 오른쪽 아래로
+            background-position: 20px 60px; : 위치 x20, y60
+            background-position: 100% 50%; : 오른쪽 끝 위에서 중앙
+
+            background-size: contain; : 비율유지 영역안에 가득채우기
+            background-size: cover; : 배경이미지가 잘리더라도 채움
+        */
+
+        article{
+            width: 1000px;
+            height: 400px;
+            border: 1px solid red;
+            background-image: url(../images/happy.png);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <article></article>
+    </section>
+</body>
+</html>

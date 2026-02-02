@@ -1,0 +1,55 @@
+main{
+    font-family: sans-serif;
+    border: 1px solid lightgray;
+    width: 400px;
+    /* 가운데 정렬 */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f6f7;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form{
+    background-color: #fff;
+    padding: 20px;
+}
+
+input, select{
+    border: 1px solid #ddd;
+    width: 100px;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.gender{
+    width: 30px;
+}
+
+.email, .nation, .ver{
+    width: 300px;
+}
+
+.tel{
+    width: 200px;
+}
+
+.auth-btn, .submit-btn{
+    background-color: #2db400;
+    padding: 10px;
+    border: none;
+    font-size: 14px;
+    width: 120px;
+    color: #fff;
+}
+
+.footer-text{
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
