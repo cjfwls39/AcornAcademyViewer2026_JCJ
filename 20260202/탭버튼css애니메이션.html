@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>탭버튼 애니메이션</title>
+
+    <style>
+      input[name="tab-group"] {
+        display: none;
+      }
+
+      .tab-button {
+        display: inline-block;
+        width: 150px;
+        padding: 10px 0;
+        text-align: center;
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.377);
+        border: 1px solid #ccc;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      .tab-content {
+        border: 5px solid #333;
+        width: 420px;
+        padding: 20px;
+        display: none;
+        border-radius: 0 15px 15px 15px;
+        box-shadow: 10px 10px 10px gray;
+      }
+
+      /* 체크된 라디오 버튼의 '다음' 라벨 스타일 변경 */
+      input#tab1:checked + label,
+      input#tab2:checked + label,
+      input#tab3:checked + label {
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        transform: translateY(-5px);
+        transition: all 0.5s ease-in-out;
+      }
+
+      /* 체크된 라디오 버튼의 '형제' 중 해당 컨텐츠만 보여준다 */
+      #tab1:checked ~ #content1,
+      #tab2:checked ~ #content2,
+      #tab3:checked ~ #content3 {
+        display: block;
+        animation: tabAnime 0.5s ease-in-out;
+      }
+
+      @keyframes tabAnime {
+        from{
+            opacity: 0;
+            transform: scale(0.9); /* 원래 크기보다 살짝 작게 */
+        }to{
+            opacity: 1;
+            transform: scale(1); /* 다시 원래 크기로 */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabs">
+      <!-- 라디오 버튼 그룹 (동일한 name을 가져야 함) -->
+      <input type="radio" name="tab-group" id="tab1" checked />
+      <label for="tab1" class="tab-button">탭 1</label>
+
+      <input type="radio" name="tab-group" id="tab2" />
+      <label for="tab2" class="tab-button">탭 2</label>
+
+      <input type="radio" name="tab-group" id="tab3" />
+      <label for="tab3" class="tab-button">탭 3</label>
+
+      <!-- 탭 내용들 (라디오 버튼들과 형제 관계여야 함) -->
+      <div id="content1" class="tab-content">
+        <h3>Desing Logic 01</h3>
+        <pre>탭 버튼이 위로 <b>점프</b>하여 활성화됩니다.</pre>
+      </div>
+
+      <div id="content2" class="tab-content">
+        <h3>Deep Dark 02</h3>
+        <pre>강력한 <b>두께 5px</b>의 테두리가 적용되었습니다.</pre>
+      </div>
+
+      <div id="content3" class="tab-content">
+        <h3>Animation 03</h3>
+        <pre><b>확대(scale)</b> 효과와 함께 나타납니다.</pre>
+      </div>
+    </div>
+  </body>
+</html>

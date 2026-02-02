@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gradient 원형</title>
+
+    <style>
+        div{
+            width: 500px;
+            height: 350px;
+            border-radius: 20px;
+        }
+
+        .gradation01{
+            background: green;
+            background: radial-gradient(green, yellow, orange);
+            /* 타원형으로 안쪽에서부터 색 순서대로 적용 */
+            /* 모양을 지정하지 않으면 타원형이 기본 */
+        }
+
+        .gradation02{
+            background: blue;
+            background: radial-gradient(circle, lightblue, blue, white);
+        }
+
+        .gradation03{
+            background: orchid;
+            background: radial-gradient(ellipse, orange, white, orchid);
+        }
+    </style>
+</head>
+<body>
+    <div class="gradation01"></div>
+    <div class="gradation02"></div>
+    <div class="gradation03"></div>
+</body>
+</html>
