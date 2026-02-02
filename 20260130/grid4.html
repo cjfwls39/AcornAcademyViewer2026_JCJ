@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid4</title>
+
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            margin: 0;
+            grid-template-columns: 1fr 4fr;
+            grid-template-rows: 150px auto 70px;
+            grid-template-areas: 
+                "header header"
+                "main aside"
+                "footer footer"
+            ;
+        }
+
+        header{
+            background-color: green;
+            grid-area: header;
+        }
+        main{
+            background-color: red;
+            grid-area: main;
+        }
+        aside{
+            background-color: violet;
+            grid-area: aside;
+        }
+        footer{
+            background-color: orange;
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <main>main</main>
+    <aside>aside</aside>
+    <footer>footer</footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타벅스2</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <!-- 
+        defer 속성 넣어줘야함 
+        main.js에서 .pick이라는 클래스 이름을 가진 요소를 찾으려 했지만 찾지 못했음
+        => let pick = document.querySelector(".pick");
+        => let pick = null (상태)
+        (브라우저가 HTML파일을 "위"에서 부터 읽어 내려가는데 <div class="pick"> 해당 요소를)
+        (찾기 전에 먼저 스크립트를 실행해 버렸기 때문)
+
+        pick 이라는 변수값이 null인 상태에서 .style을 고치라고 명령하니 없다고 에러를 보내는 상황
+        => pick.style.animation = 'unPick 1s ease-out forwards';
+        => 에러
+
+        따라서 항상 스크립트에 경로를 적고 뒤에 defer 속성을 붙여서
+        HTML 파싱이 끝난 뒤 스크립트가 실행 될 수 있도록 보장
+        즉 html파일을 먼저 다 읽고 나서 스크립트 파일을 실행해 이와같은 경우를 방지
+    -->
+</head>
+
+<body>
+    <section>
+        <img class="photo" src="https://image.istarbucks.co.kr/upload/common/img/main/2025/2026_new_year_promotion_beans_mo_251226.png" alt="">
+        <div class="word">루나 뉴이어 블렌드</div>
+    </section>
+
+    <div class="section2">
+        <div class="pick">PICK YOUR FAVORITE</div>
+        <img class="cake" src="https://image.istarbucks.co.kr/upload/common/img/main/2025/2026_new_year_pick_img_251226.png" alt="">
+    </div>
+</body>
+</html>

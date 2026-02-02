@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hf 박스 복습</title>
+
+    <style>
+        /* 다운로드한 폰트 넣기 */
+        @font-face{
+            font-family: 'The Wild Breath of Zleda';
+            src: url(../fonts/the_wild_breath_of_zelda/The\ Wild\ Breath\ of\ Zelda.otf);
+        }
+
+        body{
+            background-color: rgba(192, 181, 221, 0.644);
+            font-family: 'The Wild Breath of Zleda'; /* 위에서 불러온 폰트 적용 */
+        }
+
+        h1{
+            color: rgb(55, 55, 140);
+            font-weight: 100;
+            margin: 50px 0;
+        }
+
+        section{
+            background-color: white;
+            border-radius: 5px;
+            width: 300px;
+            height: 450px;
+            box-shadow: rgb(118, 118, 118) 0px 7px 29px 0px;
+            padding: 25px;
+            margin: 15px;
+            cursor: pointer;
+        }
+
+        section:hover{
+            box-shadow: rgba(0, 0, 0, 0.534) 0px 54px 55px;
+            /* transform: scaleY(1.04); */
+            transition: all 0.3s ease-in-out;
+            transform-origin: 0 100%; /* 회전 중심(중심점)[x축, y축, z축] */
+            transform: translateY(-50px);
+        }
+    </style>
+</head>
+<body>
+    <h1>국민과 함께 성장하는 <b>글로벌 주택금융 리더</b></h1>
+    <main>
+        <section>
+            <h2>font test ment</h2>
+            <h3>0.1% 더 저렴한 금리</h3>
+            <aside>
+                <span>최대</span><br>
+                주택가격 6억원
+                <img src="../images/transfromEX_section1.png" alt="">
+            </aside>
+        </section>
+    </main>
+</body>
+</html>
