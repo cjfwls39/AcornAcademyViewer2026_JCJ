@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상대 배치 과제-relative</title>
+
+    <style>
+        section{
+            display: flex;
+            justify-content: space-around;
+            width: 700px;
+        }
+
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .box2:hover{
+            background-color: green;
+
+            position: relative;
+            bottom: -50px;
+            left: 50px;
+        }
+
+        .box5:hover{
+            background-color: green;
+
+            position: relative;
+            top: -50px;
+            right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>h와 k글자에 마우스를 올려보세요</h2>
+    <hr>
+    <section>
+        <div class="box1">T</div>
+        <div class="box2">h</div>
+        <div class="box3">a</div>
+        <div class="box4">n</div>
+        <div class="box5">k</div>
+        <div class="box6">s</div>
+    </section>
+</body>
+</html>

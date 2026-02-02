@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position_absolute</title>
+    <!-- absolute 절대적인 -->
+
+    <style>
+        div{
+            width: 300px; 
+            height: 200px;
+        }
+
+        .box1{
+            background-color: lightseagreen;
+            position: absolute;
+            top: 80px;
+            left: 50px;
+            /* 브라우저 화면상 좌측 상단이 0,0 이라고 보면 됨 */
+            /* 따라서 그걸 기준으로 top과 left값을 적용해 포지션 변경 */
+        }
+        .box2{
+            background-color: lightsalmon;
+            position: absolute;
+            top: 150px;
+            right: 200px;
+        }
+        .box3{
+            background-color: lightskyblue;
+            position: absolute;
+            bottom: 200px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+</body>
+</html>

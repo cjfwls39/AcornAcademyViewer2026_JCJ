@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>드롭다운2</title>
+    <style>
+      .box {
+        display: flex;
+        justify-content: space-around;
+
+        background-color: lightblue;
+        height: 300px;
+      }
+      .dropbtn {
+        font-weight: bold;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      ul {
+        list-style: none;
+        text-align: center;
+        padding-left: 0;
+      }
+      .dropdown_content1,
+      .dropdown_content2,
+      .dropdown_content3 {
+        /* 처음에는 안보이게 설정 */
+        /* 단 중요한 내용은 안가려지게 한다 */
+        display: none;
+      }
+      
+      .dropbtn:hover .dropdown_content1,
+      .dropbtn:hover .dropdown_content2,
+      .dropbtn:hover .dropdown_content3 {
+        /* 보이게 */
+        display: block;
+      }
+      .dropdown_content1 li a,
+      .dropdown_content2 li a,
+      .dropdown_content3 li a {
+        text-decoration: none;
+        color: gray;
+      }
+
+      /* 1번째 드롭다운 설정 */
+      .dropdown_content1 li a.sub1:hover {
+        text-decoration: none;
+        color: red;
+      }
+      .dropdown_content1 li a.sub2:hover {
+        text-decoration: none;
+        color: green;
+      }
+      .dropdown_content1 li a.sub3:hover {
+        text-decoration: none;
+        color: blue;
+      }
+      
+      /* 2번째 드롭다운 설정 */
+      .dropdown_content2 li a.sub1:hover {
+        text-decoration: none;
+        color: pink;
+      }
+      .dropdown_content2 li a.sub2:hover {
+        text-decoration: none;
+        color: violet;
+      }
+      .dropdown_content2 li a.sub3:hover {
+        text-decoration: none;
+        color: orange;
+      }
+
+      /* 3번째 드롭다운 설정 */
+      .dropdown_content3 li a.sub1:hover {
+        text-decoration: none;
+        color: lightblue;
+      }
+      .dropdown_content3 li a.sub2:hover {
+        text-decoration: none;
+        color: lightcoral;
+      }
+      .dropdown_content3 li a.sub3:hover {
+        text-decoration: none;
+        color: seagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul class="dropbtn">
+        드롭다운
+        <div class="dropdown_content1">
+          <li><a href="#" class="sub1">서브메뉴 1</a></li>
+          <li><a href="#" class="sub2">서브메뉴 2</a></li>
+          <li><a href="#" class="sub3">서브메뉴 3</a></li>
+        </div>
+      </ul>
+
+      <ul class="dropbtn">
+        드롭다운
+        <div class="dropdown_content2">
+          <li><a href="#" class="sub1">서브메뉴 1</a></li>
+          <li><a href="#" class="sub2">서브메뉴 2</a></li>
+          <li><a href="#" class="sub3">서브메뉴 3</a></li>
+        </div>
+      </ul>
+
+      <ul class="dropbtn">
+        드롭다운
+        <div class="dropdown_content3">
+          <li><a href="#" class="sub1">서브메뉴 1</a></li>
+          <li><a href="#" class="sub2">서브메뉴 2</a></li>
+          <li><a href="#" class="sub3">서브메뉴 3</a></li>
+        </div>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 헤더부분 시작 */
+header{
+    height: 70px;
+    
+    display: flex;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+
+    color: gray;
+
+    font-weight: 600;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav{
+    padding-left: 15px;
+}
+
+.nav a{
+    padding: 15px;
+}
+
+a:hover{
+    color: #01a1dd;
+    background-color: aliceblue;
+}
+
+.logo{
+    margin-left: 30px;
+}
+
+.logo img{
+    width: 30px;
+}
+
+/* 메인부분 시작 */
+main{
+    background-image: url(../images/coffee.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    margin-bottom: 30px;
+}
+
+.ment1{
+    position: relative;
+    top: 300px;
+    left: 45px;
+    font-size: 1em; /* 부모 요소 사이즈의 1배 / 기본 16px=1em */
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ment2{
+    position: relative;
+    top: 300px;
+    left: 45px;
+    font-size: 3em;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.infoBtn{
+    position: relative;
+    top: 300px;
+    left: 45px;
+    background-color: #01a1dd;
+    border: 0;
+    padding: 5px 24px;
+    font-weight: 400;
+    cursor: pointer;
+
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* 푸터 부분 시작 */
+footer{
+    color: gray;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    /* padding: 10px 50px; => 이거 있으니까 회색바탕이 꽉 차있게 되질 않아서 주석처리  */
+}
+
+/* footer a img{
+    width: 20px;
+} */
+
+.more {
+    display: flex;
+    justify-content: space-between;
+    background-color: #555555;
+    padding: 60px 10%;
+    /* 상하여백 60px고정 / 좌우여백은 부모 요소 "너비"의 10%만큼 */
+    /* 즉 브라우저 가로가 1000px이면 좌우 여백은 100px이 되고,
+       브라우저 가로가 500px로 줄어들면 좌우 여백도 50px로 자동으로 줄어든다 
+       반응형 만들때 기초적인 지식▲    
+   */
+    min-height: 250px;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+}
+
+.list-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-list a {
+    font-size: 13px;
+    font-weight: 400;
+    color: white; 
+
+    transition: color 0.3s;
+    /* transition: [변경할 속성] [지속 시간] [속도 조절] [지연 시간];
+        - color: 글자 색상만 부드럽게 바꾸겠다는 의미 (all이라고 쓰면 모든 변화에 적용됨)
+        - 0.3s: 변화가 완료될 때까지 걸리는 시간 (0.3초)
+    */
+}
+
+.footer-list li {
+    margin-bottom: 12px;
+}
+
+.footer-list a:hover {
+    color: white;
+    background: none; /* 배경색 생기는 것 방지 */
+}
+
+.email form {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid white; /* 아래쪽에 줄 하나 그어주기 */
+    padding-bottom: 5px;
+    width: fit-content; 
+    /*인풋란 크기 맞게 */
+    padding-top: 10px;
+}
+
+.email input[type="email"] {
+    width: 300px;
+    border: 0;
+    background: transparent; /* 인풋란 배경색 투명 */
+    color: white;
+    outline: none; /* 인풋란 클릭했을때 테두리 없에기 */
+    height: 30px;
+    font-size: 14px;
+}
+
+.submit-btn{
+    background: none;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.footerBottome{
+    padding: 20px 50px;
+}

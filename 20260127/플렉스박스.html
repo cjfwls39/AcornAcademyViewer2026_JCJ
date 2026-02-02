@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexbox</title>
+
+    <style>
+        /* https://flexboxfroggy.com/#ko 요 사이트 에서 연습가능 */
+
+        section{
+            display: flex; /* 부모 요소에서 입력한다 */
+            /* 블록요소를 인라인 요소로 변경 */
+            /* justify-content: space-around; 적당한 공백을 유지하며 정렬 */
+            /* justify-content: space-between (양쪽끝 공백) 적당한 공백을 유지하며 정렬 */
+            /* justify-content: center; 가운데 정렬 */
+            /* justify-content: flex-end; 전체가 오른쪽 창 끝으로 */
+
+            /* 교차축 : 세로로 방향 전환*/
+            /* flex-direction: column; 주축을 기준으로 밑의 align-items 으로 정렬 */
+            /* flex-direction: column-reverse; 세로방향 반전 */
+            /* align-items: flex-end; */
+            /* align-items: center; */
+
+            /* height: 100vh; 전체화면(스크롤 포함) 비율 높이 [가로는 wh] */
+            /* border: 3px solid salmon; */
+
+            /* align-items: stretch용 */
+            align-items: stretch;
+            border: 1px solid red;
+            height: 300px;
+            /* 부모 요소의 세로 높이만큼 늘어난다 */
+        }
+
+        div{
+            width: 100px;
+            /* height: 100px; => align-items: stretch; 안볼꺼면 주석 다시 지우기  */
+            border: 1px solid;
+        }
+
+        .box1{
+            background-color: pink;
+        }
+        .box2{
+            background-color: lightblue;
+        }
+        .box3{
+            background-color: lightgreen;
+        }
+        .box4{
+            background-color: salmon;
+        }
+        .box5{
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>align-items: strach</h1>
+    <section>
+        <div class="box1">box1</div>
+        <div class="box2">box2</div>
+        <div class="box3">box3</div>
+        <div class="box4">box4</div>
+        <div class="box5">box5</div>
+    </section>
+</body>
+</html>

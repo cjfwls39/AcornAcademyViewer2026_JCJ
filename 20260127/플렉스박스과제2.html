@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex-box과제</title>
+
+    <style>
+        section{
+            display: flex;
+        }
+
+        /* 1번 문제 */
+        .flex_box1{
+            justify-content: space-between;
+
+            border: 1px solid blue;
+            height: 500px;
+        }
+
+        .flex_box1 > div{
+            background-color: purple;
+            color: white;
+            font-size: 16px;
+            width: 100px;
+            height: 100px;
+        }
+
+        /* 2번 문제 */
+        .flex-box2{
+            border: 1px solid blue;
+            height: 500px;
+        }
+
+        .div_2_box1{
+            background-color: purple;
+            color: white;
+            font-size: 16px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_2_box2{
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            width: 100px;
+            height: 100px;
+
+            position: relative;
+            top: 50px;
+            right: 50px;
+        }
+
+        /* 3번 문제 */
+        .flex-box3{
+            justify-content: center;
+
+            border: 1px solid blue;
+            height: 500px;
+        }
+
+        .div_3_box1{
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            width: 200px;
+            height: 200px;
+        }
+
+        .div_3_box2{
+            background-color: purple;
+            color: white;
+            font-size: 16px;
+            width: 100px;
+            height: 100px;
+
+            position: relative;
+            right: 150px;
+            top: 50px;
+        }
+
+        /*
+            3번문제 가운데 정렬시
+            예를들어 div태그 안에 div가 자식태그로 있는경우
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            이거 3줄 넣으면 가운데 정렬됨(개발시 자주사용함 ,유용)
+
+            3번 문제같이 에초에 겹쳐져 있는거면
+            div태그 안에 div를 넣어서 만드는 방식이 개발관점에서 더 좋을 것 같음
+
+            position: relative;
+            right: 150px;
+            top: 50px;
+            이 방식또한 가능하지만 이건 가운데 정렬을 위해 가로세로 값을 따로 계산해서
+            넣어줘야 하기 때문에 사이즈가 커지면 굉장히 비효율적임
+        */
+
+        /* 4번 문제 */
+        .flex-box4{
+            border: 1px solid blue;
+            height: 500px;
+        }
+
+        .flex-box4 > div{
+            background-color: purple;
+            color: white;
+            font-size: 16px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_4_box2{
+            margin-left: auto;
+            /* 
+                딴거 없이 그냥 가운데 박스에 margin-left: auto; 줘버리면 부모태그의
+                가장 오른쪽으로 붙게 만들 수 있음
+            */
+        }
+
+        /* 5번 문제 */
+        .flex-box5{
+            flex-direction: row-reverse;
+            align-items: flex-end;
+
+            border: 1px solid blue;
+            height: 500px;
+        }
+
+        .div_5_box1{
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            width: 500px;
+            height: 200px;
+        }
+
+        .div_5_box2, .div_5_box3{
+            position: relative;
+            background-color: purple;
+            color: white;
+            font-size: 16px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .div_5_box2{
+            left: 100px;
+        }
+
+        .div_5_box3{
+            left: 600px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>1번 문제</h1>
+    <section class="flex_box1">
+        <div class="div_1_box1">box1</div>
+        <div class="div_1_box2">box2</div>
+        <div class="div_1_box3">box3</div>
+    </section>
+
+    <br>
+    <hr>
+    <br>
+
+    <h1>2번 문제</h1>
+    <section class="flex-box2">
+        <div class="div_2_box1">box1</div>
+        <div class="div_2_box2">box2</div>
+    </section>
+
+    <br>
+    <hr>
+    <br>
+
+    <h1>3번 문제</h1>
+    <section class="flex-box3">
+        <div class="div_3_box1">box1</div>
+        <div class="div_3_box2">box2</div>
+    </section>
+
+    <br>
+    <hr>
+    <br>
+
+    <h1>4번 문제</h1>
+    <section class="flex-box4">
+        <div class="div_4_box1">box1</div>
+        <div class="div_4_box2">box2</div>
+        <div class="div_4_box3">box3</div>
+    </section>
+
+    <br>
+    <hr>
+    <br>
+
+    <h1>5번 문제</h1>
+    <section class="flex-box5">
+        <div class="div_5_box1">box1</div>
+        <div class="div_5_box2">box2</div>
+        <div class="div_5_box3">box3</div>
+    </section>
+</body>
+</html>
