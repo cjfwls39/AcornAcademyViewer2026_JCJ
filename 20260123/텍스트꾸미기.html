@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>블록요소 예</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Pen+Script&display=swap");
+
+      body {
+        font-family: "Nanum Pen Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .container {
+        border: 1px solid red;
+        width: 500px;
+      }
+
+      span {
+        color: blue;
+      }
+
+      .title {
+        background-color: pink;
+      }
+
+      .snow {
+        background-color: yellowgreen;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      p::first-letter {
+        color: red;
+      }
+
+      a {
+        text-decoration: none;
+        color: hotpink;
+      }
+
+      a:hover {
+        color: red;
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="title">[날씨] 내일 아침 쌀쌀,</h2>
+      <p class="sum">한낮 포근... 내륙 짙은 안개</p>
+      <p>
+        토요일인 24일 전국 아침 최저기온이 <span>영하 18도</span>까지 내려가는
+        등 최강 한파가 이어질 전망이다. 23일 기상청에 따르면 24일 아침
+        최저기온은 영하 18도에서 0도, 낮 최고기온은 영하 5도에서 6도로 예보됐다.
+        평년보다 5도 넘게 낮은 수준이다. 일요일인 25일에도 한파가 이어지겠다.
+        25일 아침 최저기온은 영하 18~3도, 낮 최고기온은 영하 5도에서 6도로
+        예상된다. 당분간 중부지방과 남부내륙은 아침 기온이 영하 10도 안팎으로
+        낮겠으며 낮 기온도 <span>영하권</span>으로 매우 춥겠다. 새벽까지
+        충청권과 전라권, 경상서부내륙에 눈이 내리고 아침까지 전라서해안에
+        <span class="snow">눈</span>이 내리는 곳이 있겠다.
+      </p>
+      <a href="#">링크</a>
+    </div>
+  </body>
+</html>

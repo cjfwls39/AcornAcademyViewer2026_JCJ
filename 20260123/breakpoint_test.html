@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>JS 중단점 테스트</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript 중단점 테스트</h1>
+
+  <button id="btn">버튼 클릭</button>
+
+  <p id="result">아직 클릭되지 않음</p>
+
+  <script>
+    // 🔹 1. 초기 변수
+    let clickCount = 0;
+
+    // 🔹 2. 버튼 요소 가져오기
+    const button = document.getElementById("btn");
+    const result = document.getElementById("result");
+
+    // 🔹 3. 클릭 이벤트 등록
+    button.addEventListener("click", function () {
+
+      // 🔴 중단점 찍기 좋은 지점 (1)
+      clickCount++;
+
+      // 🔴 중단점 찍기 좋은 지점 (2)
+      if (clickCount < 3) {
+        result.textContent = "버튼을 " + clickCount + "번 클릭했습니다.";
+      } else {
+        result.textContent = "3번 이상 클릭했습니다!";
+      }
+
+      // 🔴 중단점 찍기 좋은 지점 (3)
+      console.log("현재 clickCount:", clickCount);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a요소 링크 색상</title>
+
+    <style>
+        /* 방문하지 않은 링크 선택 */
+        a:link{
+            color: green;
+        }
+        
+        /* 방문한 링크(한번 이상 클릭) */
+        a:visited{
+            color: red;
+        }
+        
+        /* 마우스를 올렸을 때 */
+        a:hover{
+            color: yellow;
+        }
+
+        /* 포커스 받았을 때 (탭 키 눌러서 확인)*/
+        a:focus{
+            color: blueviolet;
+        }
+
+        /* 활성 링크 선택(클릭해서 이동하는 순간=> 즉 누르고 있을때 색) */
+        a:active{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p><a href="#">웹 기획</a></p>
+        <p><a href="#">웹 스토리보드</a></p>
+        <p><a href="#">웹 디자인</a></p>
+        <p><a href="#">웹 포트폴리오</a></p>
+        <p><a href="#">웹 구조</a></p>
+    </div>
+</body>
+</html>

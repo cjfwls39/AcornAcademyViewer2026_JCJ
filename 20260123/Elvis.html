@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Elvis Presley </title>
+    <style>
+        body{
+            background-color: linen;
+            color: green;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+        h3{
+            text-align: center;
+            color: orange;
+        }
+        hr{
+            background-color: gray;
+            border: solid gray;
+            height: 5px;
+        }
+        span{
+            color: blue;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        function show(){ //<img>에 이미지 달기
+            document.getElementById("fig").src="../images/happy.png";
+        }
+        function hide(){ //<img>에 이미지 제거
+            document.getElementById("fig").src="";
+        }
+    </script>
+</head>
+<body>
+    <h3 onmouseover="show()" onmouseout="hide()"> Elvis Presley </h3>
+    <hr>
+    <!-- div는 자동 줄바꿈 : 블록요소 73쪽 -->
+    <div><img id="fig" src=""></div>
+    He was an American 
+    Elvis Aaron Presley[a] (January 8, 1935 – August 16, 1977),
+     also known mononymously as Elvis, 
+     was an <span> American singer and actor. </span>
+     Known as the "King of Rock and Roll",
+      he is regarded as one of the most significant 
+      cultural <span>figures of the 20th century.</span>
+</body>
+</html>
