@@ -1,572 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>에이콘홍대 실습 뷰어 - Monaco Editor 통합본</title>
-    <style>
-      /* [1. 전역 스타일 및 변수] */
-      :root {
-        --sidebar-width: 320px;
-        --header-bg: #1e293b;
-        --primary-blue: #2563eb;
-        --bg-light: #f1f5f9;
-        --border-color: #cbd5e1;
-      }
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - About Me</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">MY_PORTFOLIO</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="lab.html">Lab</a></li>
+            </ul>
+        </nav>
+    </header>
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family:
-          "Pretendard",
-          -apple-system,
-          sans-serif;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background-color: var(--bg-light);
-        overflow: hidden; /* 전체 스크롤 방지 */
-      }
-
-      /* [2. 헤더 디자인] */
-      header {
-        background: var(--header-bg);
-        color: white;
-        padding: 1.2rem;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-      }
-
-      main {
-        display: flex;
-        flex: 1;
-        overflow: hidden;
-      }
-
-      /* [3. 사이드바 (탐색기) 스타일] */
-      #sidebar {
-        width: var(--sidebar-width);
-        background: white;
-        border-right: 1px solid var(--border-color);
-        display: flex;
-        flex-direction: column;
-      }
-
-      .sidebar-header {
-        padding: 15px 20px;
-        background: #f8fafc;
-        font-weight: bold;
-        font-size: 0.85rem;
-        border-bottom: 1px solid var(--border-color);
-        color: #475569;
-      }
-
-      #file-list-container {
-        flex: 1;
-        overflow-y: auto;
-        padding: 10px 5px;
-      }
-
-      /* 트리 구조 스타일 */
-      details {
-        margin-left: 12px;
-        margin-top: 4px;
-      }
-      #file-list-container > details {
-        margin-left: 0;
-      }
-
-      summary {
-        padding: 8px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        border-radius: 4px;
-      }
-      summary:hover {
-        background: #f1f5f9;
-      }
-      summary::before {
-        content: "📁";
-        margin-right: 8px;
-      }
-      details[open] > summary::before {
-        content: "📂";
-      }
-
-      .file-link {
-        text-decoration: none;
-        color: #64748b;
-        display: flex;
-        align-items: center;
-        padding: 6px 10px 6px 30px;
-        font-size: 0.85rem;
-        border-radius: 4px;
-        transition: 0.2s;
-      }
-      .file-link::before {
-        content: "📄";
-        margin-right: 8px;
-      }
-      .file-link:hover {
-        background: #eff6ff;
-        color: var(--primary-blue);
-      }
-      .file-link.active {
-        background: var(--primary-blue);
-        color: white;
-        font-weight: bold;
-      }
-
-      /* [4. 오른쪽 콘텐츠 영역 (동적 탭 + 에디터)] */
-      #content-area {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* 동적으로 생성될 탭 바 스타일 */
-      .tab-bar {
-        display: flex;
-        background: #e2e8f0;
-        padding: 8px 8px 0 8px;
-        gap: 2px;
-        overflow-x: auto;
-      }
-
-      .tab {
-        padding: 10px 20px;
-        background: #94a3b8;
-        border-radius: 8px 8px 0 0;
-        cursor: pointer;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #f8fafc;
-        white-space: nowrap;
-      }
-
-      .tab.active {
-        background: white;
-        color: #1e293b;
-      }
-
-      .viewer-main {
-        flex: 1;
-        background: white;
-        margin: 0 8px 8px 8px;
-        border-radius: 0 0 8px 8px;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid var(--border-color);
-      }
-
-      #preview-pane,
-      #editor-pane {
-        width: 100%;
-        height: 100%;
-      }
-      #editor-pane {
-        display: none;
-      }
-
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-
-      .empty-msg {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        color: #94a3b8;
-        font-size: 1.1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <header><h1>에이콘홍대아카데미 실습파일 뷰어</h1></header>
-
-    <main>
-      <nav id="sidebar">
-        <div class="sidebar-header">📂 EXPLORER (Practice Logs)</div>
-        <div id="file-list-container"></div>
-      </nav>
-
-      <section id="content-area">
-        <div class="tab-bar" id="tab-bar"></div>
-
-        <div class="viewer-main">
-          <div id="preview-pane">
-            <iframe
-              name="viewer"
-              id="main-iframe"
-              style="display: none"
-            ></iframe>
-            <div id="no-selection" class="empty-msg">
-              실습 파일을 선택해 주세요.
+    <main class="about-container">
+        <section class="profile-section">
+            <div class="profile-image">
+                <div class="image-placeholder">PHOTO</div> <!-- 여기를 나중에 img 태그로 교체 -->
             </div>
-          </div>
-          <div id="editor-pane"></div>
-        </div>
-      </section>
+            <div class="profile-info">
+                <h2 class="intro-title">안녕하세요, 꾸준함으로 성장하는<br><span>개발자 [정철진]</span>입니다.</h2>
+                <p class="intro-text">
+                    에이콘홍대아카데미에서 프론트엔드, 백엔드 개발을 학습하며, 
+                    사용자 중심의 인터랙티브한 <br>웹 사이트를 만드는 것에 즐거움을 느낍니다.
+                </p>
+                <ul class="contact-list">
+                    <li><i class="fas fa-envelope"></i> mirai3030@naver.com</li>
+                    <li><i class="fas fa-phone"></i> 010-8464-6539</li>
+                    <li><i class="fab fa-github"></i> <a href="https://github.com/cjfwls39" target="_blank">https://github.com/cjfwls39</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h3 class="section-subtitle">Technical Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-html5" style="color: #e34f26;"></i>
+                    <h4>HTML5</h4>
+                    <!-- <p>시멘틱 태그를 활용한 웹 표준 준수</p> -->
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt" style="color: #1572b6;"></i>
+                    <h4>CSS3</h4>
+                    <!-- <p>Flexbox, Grid를 이용한 레이아웃 구성</p> -->
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js" style="color: #f7df1e;"></i>
+                    <h4>JavaScript</h4>
+                    <!-- <p>DOM 조작 및 동적 기능 구현</p> -->
+                </div>
+                <!-- <div class="skill-card">
+                    <i class="fas fa-code" style="color: #2563eb;"></i>
+                    <h4>Monaco Editor</h4>
+                    <p>라이브 코드 뷰어 커스텀 구현</p>
+                </div> -->
+            </div>
+        </section>
     </main>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.js"></script>
-    <script>
-      /**
-       * [diaryData]
-       * (데이터 삽입 기본 형식)
-       * 20260122: [
-          { title: "그리드area예제", file: "그리드area예제.html" },
-          {
-            folder: "MobileFirst",
-            children: [
-              {
-                title: "index",
-                file: "index.html",
-                css: ["css/style.css","css/reset.css"],
-                js: "js/script.js",
-              },
-            ],
-          },
-        ]};
-        cs파일 or js파일이 여러개일 경우 [] 배열 사용
-       */
-      const diaryData = {
-        20260122: [
-          { title: "웹문서만들기", file: "index.html" },
-          { title: "표 만들기", file: "table.html" },
-          { title: "브라우저 종류", file: "브라우저종류.html" },
-          { title: "시멘틱 태그", file: "시멘틱태그.html" },
-          { title: "자기소개", file: "자기소개.html" },
-          { title: "태그 연습", file: "태그연습.html" },
-          { title: "하이퍼 링크", file: "하이퍼링크.html" },
-        ],
-        20260123: [
-          { title: "a요소링크색상", file: "a요소링크색상.html" },
-          { title: "breakpoint", file: "breakpoint_test.html" },
-          { title: "css예제", file: "css예제.html" },
-          { title: "css예제2", file: "css예제2.html" },
-          { title: "Elvis", file: "Elvis.html" },
-          { title: "오디오비디오", file: "오디오비디오.html" },
-          { title: "점심메뉴", file: "점심메뉴.html" },
-          { title: "텍스트꾸미기", file: "텍스트꾸미기.html" },
-          { title: "페이지안의링크", file: "페이지안의링크.html" },
-          { title: "폼관련태그", file: "폼관련태그.html" },
-          { title: "폼태그예제", file: "폼태그예제.html", css: "style.css" },
-          { title: "회원가입예제", file: "회원가입예제.html" },
-        ],
-        20260126: [
-          { title: "background", file: "background.html" },
-          { title: "backgroundScroll", file: "backgroundScroll.html" },
-          { title: "backgroundScroll2", file: "backgroundScroll2.html" },
-          { title: "border", file: "border.html" },
-          { title: "box-sizing", file: "box-sizing.html" },
-          { title: "float01", file: "float01.html" },
-          { title: "float02", file: "float02.html" },
-          { title: "float03", file: "float03.html" },
-          { title: "gradient01", file: "gradient01.html" },
-          { title: "grid", file: "grid.html" },
-          { title: "grid예제", file: "grid예제.html" },
-          { title: "readonly속성", file: "readonly속성.html" },
-          { title: "shadow", file: "shadow.html" },
-          { title: "네이버폼", file: "네이버폼.html", css: "naver_form.css" },
-          { title: "박스모델활용", file: "박스모델활용.html" },
-          { title: "블록요소로바꾸기", file: "블록요소로바꾸기.html" },
-          { title: "호버메뉴예제", file: "호버메뉴예제.html" },
-          { title: "호버버튼", file: "호버버튼.html" },
-        ],
-        20260127: [
-          { title: "position_absolute", file: "position_absolute.html" },
-          { title: "position_relative", file: "position_relative.html" },
-          { title: "드롭다운", file: "드롭다운.html" },
-          { title: "드롭다운2", file: "드롭다운2.html" },
-          { title: "블루보틀", file: "블루보틀.html", css: "style.css" },
-          { title: "플렉스박스", file: "플렉스박스.html" },
-          { title: "플렉스박스과제", file: "플렉스박스과제.html" },
-          { title: "플렉스박스과제2", file: "플렉스박스과제2.html" },
-        ],
-        20260128: [
-          { title: "matrix", file: "matrix.html" },
-          { title: "overflow", file: "overflow.html" },
-          { title: "rotate", file: "rotate.html" },
-          { title: "rotate3D", file: "rotate3D.html" },
-          { title: "scale", file: "scale.html" },
-          { title: "skew", file: "skew.html" },
-          { title: "transition", file: "transition.html" },
-          { title: "translate", file: "translate.html" },
-          { title: "video", file: "video.html" },
-          {
-            title: "동영상응용사이트",
-            file: "동영상응용사이트.html",
-            css: "videoWebStyle.css",
-          },
-          { title: "드롭다운transition", file: "드롭다운transition.html" },
-          { title: "상대폰트", file: "상대폰트.html" },
-          { title: "신상품목록", file: "신상품목록.html" },
-          { title: "창크기상대폰트", file: "창크기상대폰트.html" },
-          { title: "툴팁효과", file: "툴팁효과.html" },
-          {
-            title: "한국금융주택공사페이지만들기",
-            file: "한국금융주택공사페이지만들기.html",
-            css: "style.css",
-          },
-        ],
-        20260129: [
-          { title: "animation01", file: "animation01.html" },
-          { title: "animation02", file: "animation02.html" },
-          { title: "animation03", file: "animation03.html" },
-          {
-            title: "hf미디어퓨리적용",
-            file: "hf미디어퓨리적용.html",
-            css: "style.css",
-          },
-          { title: "listStyle", file: "listStyle.html" },
-          { title: "nth-of-type", file: "nth-of-type.html" },
-          { title: "nth-of-type02", file: "nth-of-type02.html" },
-          { title: "opacity_hover", file: "opacity_hover.html" },
-          { title: "미디어퓨리", file: "미디어퓨리.html" },
-          { title: "미디어퓨리2", file: "미디어퓨리2.html" },
-          { title: "미디어퓨리3", file: "미디어퓨리3.html" },
-          { title: "미디어퓨리메뉴바", file: "미디어퓨리메뉴바.html" },
-          { title: "에니메이션예제", file: "에니메이션예제.html" },
-          {
-            folder: "pageLinkEX",
-            children: [
-              { title: "index", file: "index.html" },
-              { title: "page", file: "page.html" },
-              { title: "blog", file: "blog.html" },
-              { title: "about", file: "about.html" },
-              { title: "contact", file: "contact.html" },
-            ],
-          },
-        ],
-        20260130: [
-          { title: "grid2", file: "grid2.html" },
-          { title: "grid3", file: "grid3.html" },
-          { title: "grid4", file: "grid4.html" },
-          { title: "hf박스복습", file: "hf박스복습.html" },
-          { title: "그리드area예제", file: "그리드area예제.html" },
-          {
-            folder: "MobileFirst",
-            children: [
-              {
-                title: "index",
-                file: "index.html",
-                css: ["css/style.css", "css/reset.css"],
-                js: "js/script.js",
-              },
-            ],
-          },
-          {
-            folder: "스타벅스",
-            children: [
-              {
-                title: "index",
-                file: "index.html",
-                css: "css/style.css",
-                js: "js/main.js",
-              },
-            ],
-          },
-        ],
-
-        20260202: [
-          { title: "toggle", file: "toggle.html" },
-          { title: "탭버튼css", file: "탭버튼css.html" },
-          { title: "탭버튼css애니메이션", file: "탭버튼css애니메이션.html" },
-          { title: "gradient02", file: "gradient02.html" },
-          { title: "gradient03", file: "gradient03.html" },
-          { title: "gradient04", file: "gradient04.html" },
-          { title: "gradient05", file: "gradient05.html" },
-          { title: "gradient06", file: "gradient06.html" },
-          { title: "가변동영상", file: "가변동영상.html" },
-        ]
-      };
-
-      // [글로벌 상태 관리 변수]
-      let editor = null;
-      let currentFile = null;
-      let currentBasePath = "";
-
-      // [Monaco Editor 초기 설정]
-      require.config({
-        paths: {
-          vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs",
-        },
-      });
-      require(["vs/editor/editor.main"], function () {
-        editor = monaco.editor.create(document.getElementById("editor-pane"), {
-          value: "// 파일을 선택하면 코드가 여기에 나타납니다.",
-          language: "html",
-          theme: "vs-dark",
-          automaticLayout: true,
-          readOnly: true,
-          fontSize: 14,
-          minimap: { enabled: true },
-        });
-      });
-
-      /**
-       * 소스 코드를 서버에서 가져와 에디터에 출력하는 함수
-       */
-      async function fetchCodeToEditor(path, language) {
-        try {
-          const response = await fetch(path);
-          if (!response.ok) throw new Error("파일 로드 실패");
-          const codeText = await response.text();
-
-          const model = monaco.editor.createModel(codeText, language);
-          editor.setModel(model);
-        } catch (err) {
-          editor.setValue(`// Error: ${err.message}\n// Path: ${path}`);
-        }
-      }
-
-      /**
-       * [탭 동적 생성 함수]
-       * 선택한 파일의 데이터 구성을 분석하여 상단 탭 버튼들을 다시 만듭니다.
-       */
-      function renderTabs(item, basePath) {
-        const tabBar = document.getElementById("tab-bar");
-        tabBar.innerHTML = ""; // 기존 탭 초기화
-
-        // 탭 구성 데이터 빌드 (기본적으로 Preview와 HTML은 포함)
-        const tabConfigs = [
-          {
-            label: "Preview",
-            type: "preview",
-            path: `${basePath}/${item.file}`,
-          },
-          { label: "HTML", type: "html", path: `${basePath}/${item.file}` },
-        ];
-
-        // CSS 파일 추가 (문자열 혹은 배열 모두 처리 가능)
-        if (item.css) {
-          const cssFiles = Array.isArray(item.css) ? item.css : [item.css];
-          cssFiles.forEach((p) => {
-            const fileName = p.split("/").pop(); // 경로에서 파일명만 추출
-            tabConfigs.push({
-              label: fileName,
-              type: "css",
-              path: `${basePath}/${p}`,
-            });
-          });
-        }
-
-        // JS 파일 추가
-        if (item.js) {
-          const jsFiles = Array.isArray(item.js) ? item.js : [item.js];
-          jsFiles.forEach((p) => {
-            const fileName = p.split("/").pop();
-            tabConfigs.push({
-              label: fileName,
-              type: "javascript",
-              path: `${basePath}/${p}`,
-            });
-          });
-        }
-
-        // 생성된 설정을 바탕으로 실제 탭 버튼 생성
-        tabConfigs.forEach((cfg, idx) => {
-          const tab = document.createElement("div");
-          tab.className = "tab" + (idx === 0 ? " active" : "");
-          tab.textContent = cfg.label;
-
-          tab.onclick = () => {
-            // 탭 활성화 UI 처리
-            document
-              .querySelectorAll(".tab")
-              .forEach((t) => t.classList.remove("active"));
-            tab.classList.add("active");
-
-            if (cfg.type === "preview") {
-              document.getElementById("preview-pane").style.display = "block";
-              document.getElementById("editor-pane").style.display = "none";
-            } else {
-              document.getElementById("preview-pane").style.display = "none";
-              document.getElementById("editor-pane").style.display = "block";
-              // 에디터에 해당 코드 로드
-              fetchCodeToEditor(cfg.path, cfg.type);
-            }
-          };
-          tabBar.appendChild(tab);
-        });
-      }
-
-      /**
-       * [사이드바 트리 메뉴 생성 함수 (재귀)]
-       */
-      const container = document.getElementById("file-list-container");
-      const iframe = document.getElementById("main-iframe");
-      const placeholder = document.getElementById("no-selection");
-
-      function renderTree(items, parent, currentPath) {
-        items.forEach((item) => {
-          if (item.folder) {
-            // 폴더일 때: details/summary 생성
-            const det = document.createElement("details");
-            const sum = document.createElement("summary");
-            sum.textContent = item.folder;
-            det.appendChild(sum);
-            // 자식들을 위해 다시 호출 (경로 누적)
-            renderTree(item.children, det, `${currentPath}/${item.folder}`);
-            parent.appendChild(det);
-          } else {
-            // 파일일 때: 링크 생성
-            const a = document.createElement("a");
-            a.href = `${currentPath}/${item.file}`;
-            a.target = "viewer";
-            a.className = "file-link";
-            a.textContent = item.title;
-
-            a.onclick = function (e) {
-              document
-                .querySelectorAll(".file-link")
-                .forEach((el) => el.classList.remove("active"));
-              this.classList.add("active");
-
-              currentFile = item;
-              currentBasePath = currentPath;
-
-              placeholder.style.display = "none";
-              iframe.style.display = "block";
-
-              // 파일 클릭 시 탭을 새로 생성하고 항상 'Preview'를 먼저 보여줌
-              renderTabs(item, currentPath);
-            };
-            parent.appendChild(a);
-          }
-        });
-      }
-
-      // [전체 초기화 실행]
-      function init() {
-        Object.keys(diaryData)
-          .sort()
-          .forEach((date) => {
-            const det = document.createElement("details");
-            const sum = document.createElement("summary");
-            // 날짜 포맷 (20260122 -> 2026-01-22)
-            sum.textContent = `${date.substring(0, 4)}-${date.substring(4, 6)}-${date.substring(6, 8)}`;
-            sum.style.fontWeight = "bold";
-            sum.style.color = "#1e40af";
-            det.appendChild(sum);
-            renderTree(diaryData[date], det, date);
-            container.appendChild(det);
-          });
-      }
-
-      init();
-    </script>
-  </body>
+</body>
 </html>

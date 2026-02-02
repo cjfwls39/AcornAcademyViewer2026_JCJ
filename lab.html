@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - Lab Archive</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">MY_PORTFOLIO</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="lab.html" class="active">Lab</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <nav id="sidebar">
+            <div class="sidebar-header">📂 EXPLORER</div>
+            <div id="file-list-container"></div>
+        </nav>
+
+        <section id="content-area">
+            <div class="tab-bar" id="tab-bar"></div>
+            <div class="viewer-main">
+                <div id="preview-pane">
+                    <iframe name="viewer" id="main-iframe" style="display: none"></iframe>
+                    <div id="no-selection" class="empty-msg">실습 파일을 선택해 주세요.</div>
+                </div>
+                <div id="editor-pane"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
