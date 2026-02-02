@@ -31,16 +31,38 @@ header{
     margin-left: 1rem;
 }
 
-/* 메뉴바 기본 숨김 */
-nav{
-    display: none;
-    background: #333;
-    opacity: 0.9;
+nav {
+    display: none; /* 일단 숨김 */
+    position: fixed;
+    top: 60px; /* 헤더 높이 만큼 내림 */
+    left: 0;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.95); /* 어두운 배경 */
+    z-index: 99;
 }
 
-/* JS 토글 이후 */
-nav.is-open{
-    display: block;
+
+nav.is-open {
+    display: block; /* 보이게 함 */
+}
+
+/* 메뉴 내부 리스트 스타일 */
+nav.is-open ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+nav.is-open ul li {
+    margin: 20px 0;
+}
+
+nav.is-open ul li a {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 /* 햄버거 버튼(오른쪽 버튼) */
