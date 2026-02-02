@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드롭다운 transition</title>
+
+    <style>
+        .dropdown{
+            width: 200px;
+            text-align: center;
+        }
+
+        .dropbtn-title{
+            background-color: lightblue;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .dropdown-content{
+            list-style: none;
+            background-color: lightblue;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .dropdown:hover .dropdown-content{
+            opacity: 1;
+        }
+
+        .dropdown-content li a{
+            text-decoration: none;
+            color: gray;
+            display: block;
+            padding: 10px;
+        }
+
+        .dropdown-content li a:hover{
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <!-- 메인 메뉴 -->
+        <div class="dropbtn-title">드롭다운</div>
+        <!-- 서브 메뉴 -->
+        <ul class="dropdown-content">
+            <li><a href="#">서브메뉴1</a></li>
+            <li><a href="#">서브메뉴2</a></li>
+            <li><a href="#">서브메뉴3</a></li>
+        </ul>
+    </div>
+</body>
+</html>

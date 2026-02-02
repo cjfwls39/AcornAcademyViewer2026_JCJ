@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>툴팁 효과</title>
+
+    <style>
+        .tooltip-content{
+            background: darkgoldenrod;
+            color: white;
+            width: 500px;
+            height: 100px;
+            text-align: center;
+            visibility: hidden;
+        }
+
+        .tooltip:hover .tooltip-content{
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <h1>visivility: hidden; 툴팁 효과</h1>
+    <p>
+        visivility 속성은 화면에서 감추는 역할만 함<br>
+        원래 요소가 있는 공간은 그대로 차지,<br>
+        display: none; 은 아예 공간조차 차지하지 않음<br>
+        (display: block; 으로 다시 보이게 했음)
+    </p>
+
+    <div class="tooltip">
+        <span>여기에 마우스를 올려보세요!</span>
+        <div class="tooltip-content">
+            <p>마우스를 올려야 나타나는 툴팁 부분</p>
+        </div>
+    </div>
+</body>
+</html>

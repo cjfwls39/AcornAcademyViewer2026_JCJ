@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상대 폰트</title>
+
+    <style>
+        .font-size-px16{
+            font-size: 16px;
+        }
+        .font-size-1em{
+            font-size: 1em;
+        }
+        .font-size-12em{
+            font-size: 1.2em;
+        }
+        .font-size-15em{
+            font-size: 1.5em;
+        }
+        .font-size-1rem{
+            font-size: 1rem;
+        }
+        .font-size-12rem{
+            font-size: 1.2rem;
+        }
+        .font-size-15rem{
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h2>가변 글꼴 : 글자 크기 (em) = 글자 크기 (px)</h2>
+    px로 표시한 글자의 크기를 16px로 나누면 em값을 계산할 수 있다.
+    <h3><mark>글자 지정 단위 종류 [1em = 16px = 12pt] 와 같다.</mark></h3>
+    <h4>em : 부모에서 정한 글꼴의 대문자 M 너비 기준(1em)으로 한 후 비율 값 지정 / 부모의 font-size × em 수치 = 결과 px</h4>
+    <h4>rem : 문서 시작 부분(root[html태그])에서 지정한 크기 기준(1rem)으로 한  후 비율 값 지정 / root(html태그)의 font-size × rem 수치 = 결과 px</h4>
+    <h4>ex : 해당 글꼴의 소문자 x의 높이를 기준(1ex)으로 한 후 비율 값 지정</h4>
+    <h4>px : 모니터의 1픽셀 기준으로 한 후 비율 값 지정</h4>
+    <h4>pt : 포인트라 하며, 일반 문서에서 많이 사용</h4>
+
+    <hr>
+
+    <ul>
+        <li class="font-size-px16">기준 1em = 16px Font Size 폰트 크기 설정</li>
+        <li class="font-size-1em">기준 1em = 16px Font Size 폰트 크기 설정</li>
+        <li class="font-size-12em">1.2em Font Size 폰트 크기 설정</li>
+        <li class="font-size-15em">1.5em Font Size 폰트 크기 설정</li>
+        <li class="font-size-1rem">1rem Font Size 폰트 크기 설정</li>
+        <li class="font-size-12rem">1.2rem Font Size 폰트 크기 설정</li>
+        <li class="font-size-15rem">1.5em Font Size 폰트 크기 설정</li>
+    </ul>
+</body>
+</html>

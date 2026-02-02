@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>translate</title>
+
+    <style>
+        .origin{
+            width: 300px;
+            border: 1px solid;
+        }
+
+        .moveX:hover{
+            transform: translateX(50px); /* 마우스 오버시 오른쪽으로 50px 이동 */
+            transition: 0.5s;
+        }
+
+        .moveY:hover{
+            transform: translateY(50px); /* 마우스 오버시 아래로 50px 이동 */
+            transition: 0.5s;
+        }
+
+        .moveXY:hover{
+            transform: translate(50px, 20px); /* 마우스 오버시 사선으로 이동 */
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <h2>transform: translate 트랜스폼</h2>
+    <p>
+        특정 요소의 크기나 형태가 변하는 것을 변형(변환) 또는 트랜스폼이라고 한다. <br>
+        사용자의 동작에 반응해서 텍스트나 이미지 등을 움직이게 할 수 있다. <br>
+        2차원(x, y) / 3차원(x, y, z) : 원근감의 표현 <br>
+        z축 앞뒤로 이동하는데 가까워지고 멀어진다. <br>
+
+        <mark>위치이동 : translate</mark><br>
+        <mark>확대/축소 : scale</mark><br>
+        <mark>회전 : rotate</mark><br>
+        <mark>기울기(비틀기) : skew</mark><br>
+        <br>
+        <mark>transition 전환 : 속성의 변화</mark><br>
+        <mark>transform 변환 : translate, skew, rotate3e, scale <br>애니메이션효과 1회만 적용</mark> 
+    </p>
+
+    <hr><br>
+    
+    <div class="origin">
+        <div class="moveX"><img src="../images/cake.png" width="300"></div>
+    </div>
+    <div class="origin">
+        <div class="moveY"><img src="../images/cake.png" width="300"></div>
+    </div>
+    <div class="origin">
+        <div class="moveXY"><img src="../images/cake.png" width="300"></div>
+    </div>
+</body>
+</html>

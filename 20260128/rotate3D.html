@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>retate3D</title>
+
+    <style>
+        .origin{
+            perspective: 200px; /* 원근감 설정 */
+            border: 1px solid;
+            width: 300px;
+            height: 200px;
+            margin: 50px;
+        }
+
+        .rotate3DX{
+            transform: rotateX(45deg); /* x축 기준으로 시계방향으로 45도 회전 */
+        }
+        .rotate3DY{
+            transform: rotateY(45deg) /* y축 기준으로 시계방향으로 45도 회전 */
+        }
+        .rotate3DZ{
+            transform: rotateZ(45deg) /* z축 기준으로 시계방향으로 45도 회전 */
+        }
+        .rotate3DXYZ{
+            transform: rotate3d(2.5, 1.2, -1.5, 45deg);
+            /* X축, Y축, Z축 순서로 해당 수치만큼 45도 회전 */
+        }
+    </style>
+</head>
+<body>
+    <h2>이미지 3차원 회전하기</h2>
+    <div class="origin">
+        <div class="rotate3DX">
+            <img src="../images/cake.png" width="300">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="rotate3DY">
+            <img src="../images/cake.png" width="300">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="rotate3DZ">
+            <img src="../images/cake.png" width="300">
+        </div>
+    </div>
+    <div class="origin">
+        <div class="rotate3DXYZ">
+            <img src="../images/cake.png" width="300">
+        </div>
+    </div>
+</body>
+</html>

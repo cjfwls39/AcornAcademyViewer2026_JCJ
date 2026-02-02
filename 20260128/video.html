@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .videoBack > video{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            opacity: 0.3;
+            padding: 20px;
+            
+        }
+
+        .content{
+            position: fixed;
+            width: 100%;
+            height: 50%;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.274);
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="videoBack">
+        <video src="../images/325502_tiny.mp4" loop autoplay muted></video>
+        <div class="content">
+            <h1>내용을 입력해주세요.</h1>
+        </div>
+    </div>
+</body>
+</html>
