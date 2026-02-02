@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어퓨리2</title>
+
+    <style>
+        .container{
+            display: flex;
+        }
+
+        .item{
+            background-color: blue;
+            color: white;
+            text-align: center;
+            border: 1px solid;
+            padding: 30px;
+            margin: 5px;
+        }
+
+        /* 태블릿 */
+        @media (min-width: 768px){
+            .container{
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .item{
+                width: 50%;
+            }
+        }
+
+        /* PC */
+        @media (min-width:1024px) {
+            .item{
+                width: 33.33%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+    </div>
+</body>
+</html>

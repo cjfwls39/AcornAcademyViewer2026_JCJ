@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nth-of-type</title>
+
+    <style>
+        /* 
+            nth-of-type 특정 유형만을 선택
+            nth-child 유형에 관계없이 해당 번째 선택
+
+            nth-child(n)는 어떤 요소든 n번째 것만 가져오지만,
+            (type):nth-of-type(n)은 어떤 지정한 요소의 n번째 것만 가져온다.
+        */
+
+        .child_test :nth-child(1){ /* 유형에 관계없이 */
+            color: red;
+        }
+
+        .child_test :nth-child(3){ 
+            color: red;
+        }
+
+        .type_test li:nth-of-type(1){ /* li요소 중에서 */
+            color: blue;
+        }
+
+        .type_test li:nth-of-type(3){
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <ul class="child_test">
+        <p>nth-child</p>
+        <li>1번째</li>
+        <li>2번째</li>
+        <li>3번째</li>
+        <li>4번째</li>
+    </ul>
+    <ul class="type_test">
+        <p>nth-of-type</p>
+        <li>1번째</li>
+        <li>2번째</li>
+        <li>3번째</li>
+        <li>4번째</li>
+    </ul>
+</body>
+</html>

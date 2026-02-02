@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation01</title>
+
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            line-height: 200px;
+            margin: 50px auto;
+            animation: anima 3s alternate infinite ease-in-out;
+            /* 애니메이션 이름, 시간, 한줄로 속성값 입력이 권장사항 */
+            /* 
+                alternate : 왕복
+                infinite : 무한 반복
+            */
+        }
+
+        /* 애니메이션 정의 */
+        @keyframes anima{
+            from{
+                transform: translate(0,0);
+            }to{
+                transform: translate(400px, 300px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">animation</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list-style</title>
+
+    <style>
+        ul{
+            list-style: circle;
+        }
+
+        ul li{
+            line-height: 30px;
+            margin-bottom: 2px;
+        }
+
+        ul li:nth-child(even){ /* 짝수 요소 선택 */
+            color: blue;
+        }
+
+        ul li:nth-child(odd){ /* 홀수 요소 선택 */
+            color: green;
+        }
+
+        ul li:nth-child(1){ /* 내용을 덮어쓴다 cascading */
+            color: red;
+        }
+
+        ul li:nth-child(3n+2){ /* 2번째 부터 3의 배수 선택 */
+            background-color: yellowgreen;
+        }
+
+        ul li:nth-child(n+3){ /* 3번째 요소부터 전체 선택 */
+            color: gray;
+            font-weight: bold;
+        }
+
+        ul li:nth-child(3n){ /* (3n)n의 배수 */
+            color: hotpink;
+        }
+    </style>
+</head>
+<body>
+    <h3>파스타 면의 종류</h3>
+    <ul>
+        <li>스파게티(Spaghetti) ...</li>
+        <li>랑귀네(Spaghetti) ...</li>
+        <li>스파게티(Spaghetti) ...</li>
+        <li>스파게티(Spaghetti) ...</li>
+        <li>스파게티(Spaghetti) ...</li>
+        <li>스파게티(Spaghetti) ...</li>
+        <li>스파게티(Spaghetti) ...</li>
+        <li>스파게티(Spaghetti) ...</li>
+    </ul>
+</body>
+</html>

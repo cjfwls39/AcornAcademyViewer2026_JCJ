@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어퓨리 메뉴바</title>
+    <script src="https://kit.fontawesome.com/4ec79785b5.js" crossorigin="anonymous"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        nav{
+            background-color: lightblue;
+            display: flex;
+            justify-content: space-around;
+            height: 70px;
+            align-items: center;
+            padding-top: 15px;
+        }
+
+        ul{
+            list-style: none;
+            display: flex;
+        }
+
+        li{
+            padding: 0 15px;
+        }
+
+        a{
+            text-decoration: none;
+            color: gray;
+            font-weight: 800;
+        }
+
+        a:hover{
+            color: blue;
+            transition: 0.5s ease-in-out;
+        }
+
+        .appo{
+            padding: 0 5px; 
+        }
+
+        .appo:hover{
+            background-color: blue;
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        /* 브라우저의 가로 크기가 768px 이하일때 */
+        @media screen and (max-width: 768px) {
+            nav{
+                height: 170px;
+                align-items: flex-start;
+            }
+            
+            .navbar ul{
+                flex-direction: column;
+            }
+
+            .navbar ul li{
+                line-height: 2;
+            }
+
+            .fa-bars, .appo{
+                display: none;
+            }
+
+            .logo span{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <h1>&amp; <i class="fa-solid fa-bars"></i> <span>LOGO</span></h1>
+            <!-- 엔티티 코드 -->
+        </div>
+
+        <div class="navber">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">PAGE</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </div>
+        <div class="icons">
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-apple-whole"></i></a></li>
+                <li><a href="#"><i class="fa-regular fa-address-card"></i></a></li>
+                <li class="appo">Appointment</li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>
