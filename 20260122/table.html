@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표 만들기</title>
+</head>
+<body>
+    <table border="1">
+        <caption>색깔의 종류</caption>
+        <thead>
+            <tr>
+                <th>종류</th> <th colspan="2" style="background-color: yellowgreen;">밝은 계열</th> <th>어두운 계열</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td> <td>빨강</td> <td>분홍색</td> <td>검정</td>
+            </tr>
+            <tr>
+                <td>2</td> <td>파랑</td> <td rowspan="2" style="background-color: lightblue;">하늘색</td> <td>남색</td>
+            </tr>
+            <tr>
+                <td>3</td> <td>노랑</td> <td>회색</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td>합계</td> <td>3개</td> <td>3개</td> <td>3개</td>
+            </tr>
+        </tfoot>
+    </table>
+    <h3>표에 이미지 삽입 82쪽</h3>
+    <hr>
+    <table border="1">
+        <caption>좋아하는 과일</caption>
+        <tr>
+            <td>내용 1<img src="https://img.hankyung.com/photo/202403/AA.36104679.1.jpg" width="30px"></td>
+            <td>내용 2<img src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/04/19/112966825.2.jpg" width="30px"></td>
+            <td>내용 3<img src="https://blisgo.com/wp-content/uploads/2022/02/%EA%B7%A4-%EA%BB%8D%EC%A7%88.jpg" width="30px"></td>
+        </tr>
+    </table>
+
+    <dl>
+        <dt><b>상품구성</b></dt>
+        <dd>실속형 & 고급형 상품 구성</dd>
+    </dl>
+    <table border="1">
+        <tr>
+            <td>용도</td> <td>중량</td> <td>개수</td> <td>가격</td>
+        </tr>
+        <tr>
+            <td rowspan="2">실속형</td> <td>3kg</td> <td>11~16과</td> <td>17,000원</td>
+        </tr>
+        <tr>
+            <td>5kg</td> <td>18~25과</td> <td>25,000원</td>
+        </tr>
+        <tr>
+            <td rowspan="2">고급형</td> <td>3kg</td> <td>11~16과</td> <td>28,000원</td>
+        </tr>
+        <tr>
+            <td>5kg</td> <td>18~25과</td> <td>47,000원</td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1">
+        <tr><td colspan="4">아이티윌 게스트하우스 예약 안내</td></tr>
+        <tr>
+            <td>방 이름</td> <td>대상</td> <td>크기</td> <td>가격</td>
+        </tr>
+        <tr>
+            <td>유채방</td> <td>여성 도미토리</td> <td rowspan="3">4인실</td> <td rowspan="4">1인 20,000원</td>
+        </tr>
+        <tr>
+            <td rowspan="2">동맥방</td> <td>남성 도미토리</td>
+        </tr>
+        <tr>
+            <td>가족 1팀</td>
+        </tr>
+        <tr>
+            <td colspan="2">천혜향방</td> <td>2인실</td>
+        </tr>
+        <tr>
+            <td colspan="4">바깥채 단독 : 전화문의 (010-777-5454)</td>
+        </tr>
+    </table>
+
+    <!-- 
+        table 표 전체를 담는 컨테이너
+        caption 표의 제목
+        thead 해딩 셀 그룹
+        tbody 데이터 셀 그룹
+        tfoot 바닥 셀 그룹
+        tr 행, 여러 개의 td, th 포함
+        th 제목(헤딩) 셀: 글꼴 두꺼워짐
+        td 데이터 셀(칸)
+    -->
+</body>
+</html>

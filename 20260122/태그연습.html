@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다양한 태그 연습</title>
+  </head>
+  <body>
+    <h3>텍스트 꾸미기</h3>
+    <hr />
+    <p>
+      <b>진하게</b><br />
+      <strong>중요한 내용인데 진하게</strong><br />
+      <em>강조(텍스트 기울임)</em><br />
+      <i>이탤릭체로 강조</i><br />
+      보통문자 <small>한 단계 작은 문자</small><br />
+      <del>삭제</del><br />
+      <ins>추가(밑줄)</ins><br />
+      보통문자의 <sup>윗첨자</sup><br />
+      보통문자의 <sub>아래첨자</sub><br />
+      <mark>하이라이팅 마크</mark><br />
+    </p>
+    <h1>웹사이트의 모습을 기술하기 위한 마크업 언어.</h1>
+    프로그래밍 언어가 아니라 <strong>마크업 정보</strong>를 표현하는
+    <mark>마크업 언어</mark>로 문서의 내용 이외의 문서 언어라는 뜻이다.
+
+    <p>
+      웹의 창시자인 팀 버너스 리
+      <q>웹의 힘은 보편성에 있다.</q>
+      <!-- q태그: 인용 문구 표시 -->
+      장애에 구애없이 모든사람이 접근할 수 있는 것이 필수 요소이다. 라는 말로
+      <em>웹 접근성</em>을 설명한다.
+    </p>
+
+    <p>
+      루비는 1995년 일본 프로그래머인 마츠모토 유키히로<ruby
+        >松本行弘<rt>まつもとゆきひろ</rt></ruby
+      >가 만든 프로그래밍 언어이다.
+    </p>
+
+    <ruby>윗주 <rt>ruby</rt></ruby>
+    <ruby>아래글자<rt>윗글자</rt></ruby>
+
+    <p>
+      <b><abbr title="Internet of Things"></abbr>IoT</b>란 각종 사물에 센서와
+      통신 기능을 갖춘 모든 사물(가전제품, 자동차, 의류 등)을 인터넷에 연결하여
+      서로 데이터를 주고받고 소통하게 함으로써 새로운 가치와 서비스를 창출하는
+      기술 및 네트워크를 의미합니다. 단순히 연결하는 것을 넘어, 데이터를
+      기반으로 원격 제어, 자동화, 분석 등을 통해 효율성과 편의성을 높이며 스마트
+      홈, 스마트 시티 등 다양한 분야에서 활용됩니다.
+    </p>
+
+    <h3>ul 태그: unordered list 목차가 없는 리스트</h3>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <h3>ol 태그: ordered list 목차가 있는 리스트</h3>
+    <ol>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ol>
+
+    <mark>리코타치즈 만들기</mark>
+    <p><b>재료: </b> 우유, 생크림, 소금, 레몬즙</p>
+    
+    <h3>재료 준비</h3>
+    <ol>
+        <li>분량의 재료를 넣고</li>
+        <li>골고루 섞은 후</li>
+        <li>불의 세기를 중불로 조절</li>
+        <li>끓기 시작하면 약불로</li>
+    </ol>
+
+    <h1>리코타치즈 샐러드 만들기</h1>
+    <ol type="a">
+        <li>위에서 만든 리코타치즈를 이용해서</li>
+        <li>샐러드를 만들어 봅니다.</li>
+    </ol>
+
+    <h3>재료 준비</h3>
+    <ol type="a" start="3">
+        <li>야채를 씻어서 물기를 빼줍니다.</li>
+    </ol>
+
+    <strong>샐러드 소스 종류</strong>
+    <dl>
+        <dt>시판용 소스</dt>
+        <dd>다양한 시판용 소스가 있다.</dd>
+    </dl>
+
+    <dl>
+        <dt>소스 만들기</dt>
+        <dd>오늘은 레몬을 활용한 소스를 만들어보겠습니다.</dd>
+    </dl>
+
+    <ul>
+        <li>1일차</li>
+        <ol type="a">
+            <li>해녀박물관</li>
+            <li>낚시체험</li>
+        </ol>
+        <li>2일차</li>
+        <ol type="a" start="3">
+            <li>용눈이오름</li>
+            <li>만장굴</li>
+            <li>카약체험</li>
+        </ol>
+    </ul>
+  </body>
+</html>
