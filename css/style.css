@@ -11,6 +11,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 body {
@@ -20,6 +21,13 @@ body {
   flex-direction: column;
   background-color: var(--bg-light);
   overflow: hidden;
+
+  /* 이거랑 밑에 ::-webkit-scrollbar 한 세트 */
+  /* 스크롤 기능만 남기고 스크롤 바만 없에기 */
+  -ms-overflow-style: none; 
+}
+::-webkit-scrollbar{
+    display: none;
 }
 
 /* [2. 헤더 디자인] */
@@ -60,7 +68,6 @@ header {
   color: white;
 }
 
-/* 기존 Lab 페이지용 스타일은 그대로 유지합니다 */
 main {
   display: flex;
   flex: 1;
@@ -321,4 +328,50 @@ iframe {
 .skill-card p {
   font-size: 0.85rem;
   color: #94a3b8;
+}
+
+/* [1] 기본 스타일 (Mobile: 0px ~ 379px) */
+:root {
+  --sidebar-width: 100%; /* 모바일에서는 사이드바가 화면 전체를 덮거나 숨겨짐 */
+}
+
+body {
+  flex-direction: column; /* 모바일은 세로로 배치 */
+}
+
+/* [2] 일반 스마트폰 (min-width: 380px) */
+@media (min-width: 380px) {
+  .intro-title {
+    font-size: 1.8rem; /* 글자 크기를 살짝 키움 */
+  }
+}
+
+/* [3] 태블릿 (min-width: 768px) */
+@media (min-width: 768px) {
+  :root {
+    --sidebar-width: 250px; /* 사이드바를 고정된 너비로 변경 */
+  }
+
+  main {
+    flex-direction: row; /* 태블릿부터는 가로로 배치 (사이드바 + 본문) */
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr); /* 기술 스택을 2열로 배치 */
+  }
+}
+
+/* [4] 데스크탑 (min-width: 1024px) */
+@media (min-width: 1024px) {
+  :root {
+    --sidebar-width: 320px; /* 충분히 넓은 너비 확보 */
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr); /* 데스크탑에서는 4열로 시원하게 배치 */
+  }
+  
+  .about-container {
+    max-width: 1200px; /* 본문 폭 제한으로 가독성 확보 */
+  }
 }

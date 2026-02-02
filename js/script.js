@@ -150,6 +150,8 @@ const diaryData = {
     { title: "gradient05", file: "gradient05.html" },
     { title: "gradient06", file: "gradient06.html" },
     { title: "가변동영상", file: "가변동영상.html" },
+    { title: "가상요소", file: "가상요소.html" },
+    { title: "가상요소연습", file: "가상요소연습.html" },
   ],
 };
 
