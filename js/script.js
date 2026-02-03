@@ -1,25 +1,39 @@
 /**
- * [최종 완성본 script.js] 
- * 1. 이중 캐시: 일반(1시간) & 비상(제한 해제 시까지) 모드
- * 2. 상세 로깅: API 상태 및 캐시 여부 실시간 표시
- * 3. UX 최적화: 사이드바 HTML 전용, 탭 소스 통합 뷰어
+ * [최종 통합 완성본 script.js] 
+ * 1. 이중 캐시: 일반(1시간) 및 비상(API 제한 리셋 시까지) 모드 제어
+ * 2. 상세 로깅: 데이터 출처 및 API 상태 실시간 콘솔 출력
+ * 3. 범용 경로 대응: <base> 태그 주입으로 이미지/리소스 경로 문제 해결
+ * 4. UX 최적화: 사이드바 HTML 전용 필터링 및 소스 탭 자동 생성
  */
 
 const GITHUB_CONFIG = {
   username: 'cjfwls39',
   projectTopic: 'portfolio-project',
   labTopic: 'portfolio-lab',
-  normalExpiry: 3600000 // 1시간
+
+  // ⭐ 호스팅 서비스에 따라 이 부분만 수정하면 됩니다.
+  rawBaseUrl: "https://raw.githubusercontent.com", 
+  defaultBranch: "main",
+  normalExpiry: 3600000 // 일반 캐시 유효 시간: 1시간
+
+  // 나중에 .env 사용해서 싹다 환경변수 사용해서 보안성 높이는게 좋아보임
 };
 
 let editor = null;
 
 /**
- * [1. Helper] 에러 방지를 위해 날짜 변환 함수를 최상단에 배치합니다.
+ * [1. Helper] 날짜 변환 함수 (ReferenceError 방지를 위해 상단 배치)
  */
 function formatDateString(dateStr) {
   if (!/^\d{8}$/.test(dateStr)) return dateStr;
   return `${dateStr.substring(0, 4)}년 ${dateStr.substring(4, 6)}월 ${dateStr.substring(6, 8)}일`;
+}
+
+/**
+ * [2. Helper] Raw URL 생성 (호스팅 환경 대응)
+ */
+function getRawUrl(repoName, filePath) {
+  return `${GITHUB_CONFIG.rawBaseUrl}/${GITHUB_CONFIG.username}/${repoName}/${GITHUB_CONFIG.defaultBranch}/${filePath}`;
 }
 
 // Monaco Editor 초기화
@@ -29,14 +43,14 @@ if (typeof require !== 'undefined') {
     const container = document.getElementById("editor-pane");
     if (!container) return;
     editor = monaco.editor.create(container, {
-      value: "// 파일을 선택해 주세요.",
+      value: "// 왼쪽 메뉴에서 파일을 선택하세요.",
       language: "html", theme: "vs-dark", automaticLayout: true, readOnly: true, fontSize: 14,
     });
   });
 }
 
 /**
- * [2. Core] 이중 캐시 제어 및 로그 포함 API 호출
+ * [3. Core] 이중 캐시 및 상세 로그 포함 API 호출
  */
 async function fetchGH(endpoint) {
   const cacheKey = `gh_cache_${endpoint.replace(/[\/\?&=]/g, '_')}`;
@@ -47,15 +61,15 @@ async function fetchGH(endpoint) {
 
   console.groupCollapsed(`🚀 [GitHub API] 호출 시도: ${endpoint}`);
 
-  // ⭐ 비상 모드: 제한 해제 시간(Reset Time)까지는 무조건 캐시 사용
+  // 비상 모드 체크
   if (now < limitResetTime && cached) {
     const remaining = Math.ceil((limitResetTime - now) / 60000);
-    console.warn(`[비상 모드] 제한 해제까지 약 ${remaining}분 남음. 캐시를 강제 고정합니다.`);
+    console.warn(`[비상 모드] 제한 해제까지 약 ${remaining}분 남음. 기존 데이터를 고정 사용합니다.`);
     console.groupEnd();
     return JSON.parse(cached).data;
   }
 
-  // ⭐ 일반 모드: 1시간 유효 기간 체크
+  // 일반 캐시 체크
   if (cached) {
     const { data, timestamp } = JSON.parse(cached);
     if (now - timestamp < GITHUB_CONFIG.normalExpiry) {
@@ -63,55 +77,52 @@ async function fetchGH(endpoint) {
       console.groupEnd();
       return data;
     }
-    console.log(`[Cache Expired] 데이터가 낡아 새로 호출합니다.`);
-  } else {
-    console.log(`[No Cache] 첫 방문 혹은 캐시 없음. 실시간 호출 시작.`);
+    console.log(`[Cache Expired] 캐시 만료. 새로 호출합니다.`);
   }
 
   try {
     const response = await fetch(`https://api.github.com/${endpoint}`);
     
-    // API 제한(403) 도달 시 비상 모드 값 설정
     if (response.status === 403) {
       const resetHeader = response.headers.get('x-ratelimit-reset');
-      if (resetHeader) {
-        const resetTs = parseInt(resetHeader) * 1000;
-        localStorage.setItem(resetKey, resetTs);
-        console.error(`[Limit Exceeded] 제한 도달. 리셋 시간: ${new Date(resetTs).toLocaleTimeString()}`);
-      }
+      if (resetHeader) localStorage.setItem(resetKey, parseInt(resetHeader) * 1000);
+      
       if (cached) {
-        console.warn("[Fallback] 비상 모드로 전환하며 기존 데이터를 동결합니다.");
-        console.groupEnd();
-        return JSON.parse(cached).data;
+          console.error(`[Limit Exceeded] 비상 모드 진입. 기존 데이터를 유지합니다.`);
+          console.groupEnd();
+          return JSON.parse(cached).data;
       }
     }
 
     const data = await response.json();
     localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: now }));
-    console.log(`[Success] API 호출 성공 및 캐시 갱신 완료`);
+    console.log(`[Success] API 호출 성공 및 캐시 갱신`);
     console.groupEnd();
     return data;
   } catch (e) {
+    console.error(`[Error] 호출 실패:`, e);
     console.groupEnd();
     return cached ? JSON.parse(cached).data : null;
   }
 }
 
 /**
- * [3. Lab] 탭 생성 및 소스 주입
+ * [4. Lab] 탭 생성 및 경로 최적화 (Iframe 해결)
  */
 async function renderSourceTabs(selectedItem, repoName) {
   const tabBar = document.getElementById("tab-bar");
   const iframe = document.getElementById("main-iframe");
+  const placeholder = document.getElementById("no-selection");
   if (!tabBar || !iframe) return;
 
   tabBar.innerHTML = "<div class='tab loading'>Sources Loading...</div>";
 
-  // Trees API로 한 번에 모든 구조 가져오기 (캐시 적용)
+  // Trees API로 전체 구조 획득
   const treeData = await fetchGH(`repos/${GITHUB_CONFIG.username}/${repoName}/git/trees/main?recursive=1`);
   if (!treeData) return;
 
-  const projectRootPath = selectedItem.path.split('/').slice(0, 2).join('/'); 
+  const pathParts = selectedItem.path.split('/');
+  const projectRootPath = pathParts.slice(0, 2).join('/'); 
   const allSources = treeData.tree.filter(item => 
     item.path.startsWith(projectRootPath) && /\.(html|css|js)$/i.test(item.path)
   );
@@ -119,7 +130,7 @@ async function renderSourceTabs(selectedItem, repoName) {
   tabBar.innerHTML = "";
   const tabConfigs = [];
   if (selectedItem.name.endsWith('.html')) {
-    tabConfigs.push({ label: "Preview", type: "preview", url: `https://raw.githubusercontent.com/${GITHUB_CONFIG.username}/${repoName}/main/${selectedItem.path}` });
+    tabConfigs.push({ label: "Preview", type: "preview", url: getRawUrl(repoName, selectedItem.path) });
   }
 
   const selectedBaseName = selectedItem.name.split('.').slice(0, -1).join('.').toLowerCase();
@@ -131,9 +142,10 @@ async function renderSourceTabs(selectedItem, repoName) {
 
   relatedSources.forEach(file => {
     let lang = "html";
-    if (file.path.endsWith(".css")) lang = "css";
-    if (file.path.endsWith(".js")) lang = "javascript";
-    tabConfigs.push({ label: file.path.replace(projectRootPath + "/", "").toUpperCase(), type: lang, url: `https://raw.githubusercontent.com/${GITHUB_CONFIG.username}/${repoName}/main/${file.path}` });
+    const ext = file.path.split('.').pop().toLowerCase();
+    if (ext === "css") lang = "css";
+    if (ext === "js") lang = "javascript";
+    tabConfigs.push({ label: file.path.replace(projectRootPath + "/", "").toUpperCase(), type: lang, url: getRawUrl(repoName, file.path) });
   });
 
   const loadTab = async (cfg) => {
@@ -141,24 +153,36 @@ async function renderSourceTabs(selectedItem, repoName) {
     const tabs = document.querySelectorAll(".tab");
     tabs.forEach(t => { if(t.textContent === cfg.label) t.classList.add("active"); });
 
-    const response = await fetch(cfg.url);
+    console.log(`📂 [파일 로드] ${cfg.label}`);
+    let response = await fetch(cfg.url);
+    if (!response.ok && GITHUB_CONFIG.defaultBranch === "main") {
+        response = await fetch(cfg.url.replace('/main/', '/master/')); // 브랜치 예외 처리
+    }
     let content = await response.text();
 
     if (cfg.type === "preview") {
       document.getElementById("preview-pane").style.display = "block";
       document.getElementById("editor-pane").style.display = "none";
       iframe.style.display = "block";
-      document.getElementById("no-selection").style.display = "none";
+      if (placeholder) placeholder.style.display = "none";
 
+      // ⭐ [중요] <base> 태그 주입으로 호스팅 경로 문제 해결
+      const folderPath = selectedItem.path.split('/').slice(0, -1).join('/');
+      const baseUrl = `${getRawUrl(repoName, folderPath)}/`;
+      const baseTag = `<base href="${baseUrl}">`;
+      
+      content = content.includes('<head>') ? content.replace('<head>', `<head>${baseTag}`) : baseTag + content;
+
+      // CSS/JS 직접 주입
       for (const s of allSources) {
-          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_CONFIG.username}/${repoName}/main/${s.path}`;
+          const rawUrl = getRawUrl(repoName, s.path);
           if (s.path.endsWith('.css')) {
               const res = await fetch(rawUrl);
-              content = content.replace(/<link[^>]+href=["'][^"']+["'][^>]*>/i, `<style>${await res.text()}</style>`);
+              if (res.ok) content = content.replace(/<link[^>]+href=["'][^"']+["'][^>]*>/i, `<style>${await res.text()}</style>`);
           }
           if (s.path.endsWith('.js')) {
               const res = await fetch(rawUrl);
-              content = content.replace(/<script[^>]+src=["'][^"']+["'][^>]*><\/script>/i, `<script>${await res.text()}</script>`);
+              if (res.ok) content = content.replace(/<script[^>]+src=["'][^"']+["'][^>]*><\/script>/i, `<script>${await res.text()}</script>`);
           }
       }
       iframe.srcdoc = content;
@@ -181,7 +205,7 @@ async function renderSourceTabs(selectedItem, repoName) {
 }
 
 /**
- * [4. Lab] 트리 메뉴 생성 (필터링 적용)
+ * [5. Lab] 트리 메뉴 생성
  */
 async function loadRepoContents(repoName, path = "", parentElement) {
   const contents = await fetchGH(`repos/${GITHUB_CONFIG.username}/${repoName}/contents/${path}`);
@@ -226,7 +250,7 @@ async function loadRepoContents(repoName, path = "", parentElement) {
 }
 
 /**
- * [5. Projects] 카드 렌더링
+ * [6. Projects] 카드 렌더링
  */
 function renderProjects(repos) {
   const grid = document.querySelector('.project-grid');
@@ -245,9 +269,6 @@ function renderProjects(repos) {
   `).join('');
 }
 
-/**
- * [6. Init] 전체 초기화 실행
- */
 async function init() {
   console.log("%c🌟 포트폴리오 데이터 로드 시작", "color: #0ea5e9; font-weight: bold; font-size: 1.2rem;");
   const repos = await fetchGH(`users/${GITHUB_CONFIG.username}/repos?sort=updated&per_page=100`);
