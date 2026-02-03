@@ -1,0 +1,56 @@
+/* [Projects 전용 레이아웃] */
+.projects-container {
+    display: block;
+    overflow-y: auto;
+    padding: 50px 20px;
+}
+
+.projects-container h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: white;
+    border: 1px solid var(--ui-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card .card-thumb {
+    height: 200px;
+    background: #ddd;
+}
+
+.project-card .card-body {
+    padding: 20px;
+}
+
+.project-card h3 {
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 10px 0;
+}
+
+.project-card .detail-link {
+    color: var(--brand-color);
+    font-weight: bold;
+    text-decoration: none;
+}

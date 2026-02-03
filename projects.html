@@ -1,33 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Portfolio - Projects</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
     <header>
-        <div class="logo">MY_PORTFOLIO</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="lab.html">Lab</a></li>
-            </ul>
-        </nav>
+      <div class="logo">MY_PORTFOLIO</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="lab.html">Lab</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <main style="display: block; overflow-y: auto; padding: 50px 20px;">
-        <h2 style="text-align: center; margin-bottom: 40px;">Featured Projects</h2>
-        <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
-            <div class="card" style="background: white; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;">
-                <div style="height: 200px; background: #ddd;"></div> <div style="padding: 20px;">
-                    <h3>추후 이곳에 프로젝트 기술</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; margin: 10px 0;">HTML, CSS, JS, API 활용...</p>
-                    <a href="#" style="color: var(--primary-blue); font-weight: bold; text-decoration: none;">자세히 보기 →</a>
-                </div>
-            </div>
+    <main class="projects-container">
+      <h2>Featured Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="card-thumb"></div>
+          <div class="card-body">
+            <h3>추후 이곳에 프로젝트 기술</h3>
+            <p>HTML, CSS, JS, API 활용...</p>
+            <a href="#" class="detail-link">자세히 보기 →</a>
+          </div>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>

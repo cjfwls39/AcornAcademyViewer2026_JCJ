@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Portfolio - Lab Archive</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/lab.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.js"></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -27,15 +31,12 @@
             <div class="tab-bar" id="tab-bar"></div>
             <div class="viewer-main">
                 <div id="preview-pane">
-                    <iframe name="viewer" id="main-iframe" style="display: none"></iframe>
+                    <iframe name="viewer" id="main-iframe"></iframe>
                     <div id="no-selection" class="empty-msg">실습 파일을 선택해 주세요.</div>
                 </div>
                 <div id="editor-pane"></div>
             </div>
         </section>
     </main>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.js"></script>
-    <script src="js/script.js"></script>
 </body>
 </html>
