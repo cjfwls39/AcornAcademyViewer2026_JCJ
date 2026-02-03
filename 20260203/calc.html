@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clac</title>
+
+    <style>
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 30px;
+        }
+
+        .item{
+            background-color: #ff9644;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .item{
+            /* 33.33%에서 간격(30xp) 제외 */
+            width: calc(33.33% - 20px);
+        }
+
+        @media (max-width: 768px){
+            .item{
+                width: calc(50% - 15px);
+                background-color: #a0d279;
+            }
+        }
+
+        @media (max-width: 320px){
+            .item{
+                width: 100%;
+                background-color: #47c252;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+</html>
