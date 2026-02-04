@@ -1,56 +1,29 @@
-/* [Projects 전용 레이아웃] */
-.projects-container {
-    display: block;
-    overflow-y: auto;
-    padding: 50px 20px;
-}
+.projects-container { padding: 40px; height: calc(100vh - 40px); overflow-y: auto; }
 
-.projects-container h2 {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+.project-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 20px; 
 }
 
 .project-card {
-    background: white;
-    border: 1px solid var(--ui-border);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-.project-card .card-thumb {
-    height: 200px;
-    background: #ddd;
-}
-
-.project-card .card-body {
+    border: 1px solid var(--accent-dim);
     padding: 20px;
+    background: rgba(0, 255, 65, 0.05);
+    transition: 0.3s;
 }
 
-.project-card h3 {
-    margin-bottom: 10px;
+.project-card:hover { 
+    border-color: var(--accent-green); 
+    background: var(--accent-dim); 
 }
 
-.project-card p {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin: 10px 0;
+.project-card h3 { 
+    border-bottom: 1px dashed var(--accent-dim); 
+    padding-bottom: 10px; margin-top: 0; 
 }
 
-.project-card .detail-link {
-    color: var(--brand-color);
-    font-weight: bold;
-    text-decoration: none;
+.detail-link { 
+    color: var(--accent-green); text-decoration: none; 
+    font-weight: bold; display: block; margin-top: 15px; 
 }
+.detail-link::before { content: "> EXECUTE: "; }

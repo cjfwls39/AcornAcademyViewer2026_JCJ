@@ -1,106 +1,173 @@
-/* [🎭 인트로 커튼콜 & 강력한 단일 스포트라이트] */
+/* [index.css] 한글 터미널 테마 + 프로필 카드 중앙 정렬 */
+
+/* 1. 기본 터미널 테마 설정 */
+.terminal-theme {
+    background: #111;
+    color: #00ff41;
+    font-family: 'Nanum Gothic Coding', 'JetBrains Mono', monospace;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+/* 2. [핵심] 모니터 효과 오버레이 (은은하게) */
+.crt-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.15) 2px,
+        rgba(0, 0, 0, 0.15) 4px
+    );
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.7);
+}
+
+/* 3. 중앙 컨테이너 및 출력 영역 */
+#terminal-container {
+    flex: 1;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+}
+
+#ai-response {
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.6;
+}
+
+/* ⭐ 프로필 카드 중앙 정렬 보정 */
+.profile-card {
+    display: flex;
+    gap: 30px;
+    padding: 25px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    background: rgba(0, 255, 65, 0.05);
+    margin: 20px auto; /* 상하 20px, 좌우 자동(중앙 정렬) */
+    max-width: 800px; /* 적절한 최대 너비 설정 */
+    width: 90%; /* 모바일 대응을 위한 너비 설정 */
+    animation: fadeIn 0.5s ease-out;
+}
+
+.profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    border-bottom: 1px dotted rgba(0, 255, 65, 0.2);
+    padding-bottom: 6px;
+}
+
+.info-label {
+    width: 110px;
+    font-weight: bold;
+    color: var(--accent-green);
+    opacity: 0.9;
+}
+
+.info-value {
+    flex: 1;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.6);
+}
+
+/* 이미지 구역 */
+.profile-pic-area {
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1.2;
+    border: 2px dashed rgba(0, 255, 65, 0.4);
+    background: rgba(0, 255, 65, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 255, 65, 0.5);
+    font-size: 0.8rem;
+}
+
+.image-placeholder::before {
+    content: "NO_IMAGE_DATA";
+    font-family: var(--mono-font);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. 부팅 인트로 위치 및 스타일 */
 #intro-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 9999;
-    background-color: #000; /* 완전한 암전 */
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000;
+    z-index: 1000;
+    padding: 50px;
+}
+
+.log-line {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+}
+
+/* 5. 명령어 힌트 및 입력창 */
+.command-hints {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.command-hints button {
+    background: none; border: none; color: #00ff41;
+    font-family: inherit; font-size: 1.1rem;
+    margin-right: 20px; cursor: pointer;
+    font-weight: bold;
+}
+
+.command-hints button:hover {
+    background: #00ff41; color: #000;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.8);
+}
+
+.input-line {
+    margin-top: 15px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    overflow: hidden;
-    transition: opacity 1s 1.5s, visibility 1s 1.5s;
 }
 
-/* ⭐ 스포트라이트 효과 고도화 */
-.intro-reveal-layer {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* 1. 조명 자체의 밝기 (Glow) */
-    background: radial-gradient(
-        circle 400px at var(--mouse-px-x, 50%) var(--mouse-px-y, 50%),
-        rgba(255, 255, 255, 0.15) 0%, /* 0.15를 높이면 더 밝아짐 */
-        transparent 100%
-    );
+.prompt { margin-right: 10px; font-weight: bold; }
 
-    /* 2. 조명의 크기 (Mask) */
-    -webkit-mask-image: radial-gradient(
-        circle 300px at var(--mouse-px-x, 50%) var(--mouse-px-y, 50%), /* 300px를 키우면 조명 반경이 커짐 */
-        black 35%, /* 검은색 영역이 넓을수록 조명이 더 선명하게 보임 */
-        transparent 100%
-    );
-    mask-image: radial-gradient(
-        circle 300px at var(--mouse-px-x, 50%) var(--mouse-px-y, 50%),
-        black 35%,
-        transparent 100%
-    );
+#terminal-input {
+    background: none; border: none; outline: none;
+    color: inherit; font-family: inherit; font-size: 1.1rem;
+    flex-grow: 1;
+    caret-color: transparent;
 }
 
-.curtain {
-    position: absolute;
-    top: 0;
-    width: 50.5%;
-    height: 100%;
-    background-color: #4d4d4d; /* 조명을 받아야 드러나는 커튼 컬러 */
-    transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+.cursor {
+    width: 10px; height: 1.2rem;
+    background: #00ff41;
+    display: inline-block;
+    animation: blink 1s steps(2, start) infinite;
+    vertical-align: middle;
 }
 
-.curtain.left { left: 0; border-right: 1px solid rgba(255,255,255,0.05); }
-.curtain.right { right: 0; border-left: 1px solid rgba(255,255,255,0.05); }
-
-#intro-overlay.hidden .curtain.left { transform: translateX(-100%); }
-#intro-overlay.hidden .curtain.right { transform: translateX(100%); }
-#intro-overlay.hidden { opacity: 0; visibility: hidden; }
-
-.intro-message-box {
-    text-align: center;
-    color: white;
-    z-index: 10;
-}
-.intro-sub-text {
-    font-size: 1rem;
-    letter-spacing: 0.5rem;
-    color: var(--brand-color);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-.intro-main-text {
-    font-size: 1.8rem;
-    font-weight: 300;
-    word-break: keep-all;
-}
-
-/* [🏠 About Me 본문] */
-.about-container {
-  display: block;
-  overflow-y: auto;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 80px 20px;
-}
-.profile-section { display: flex; align-items: center; gap: 50px; margin-bottom: 80px; }
-.image-placeholder {
-  width: 250px; height: 300px; background: #cbd5e1; border-radius: 15px; 
-  display: flex; justify-content: center; align-items: center; font-weight: bold; color: #64748b; border: 2px solid var(--ui-border);
-}
-.intro-title { font-size: 2.2rem; line-height: 1.3; margin-bottom: 20px; }
-.intro-title span { color: var(--brand-color); }
-.intro-text { color: #64748b; line-height: 1.7; margin-bottom: 30px; }
-.contact-list { list-style: none; padding: 0; }
-.contact-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: #334155; }
-.contact-list a { color: var(--brand-color); text-decoration: none; }
-.skills-section { border-top: 1px solid var(--ui-border); padding-top: 60px; }
-.section-subtitle { font-size: 1.8rem; margin-bottom: 30px; text-align: center; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-.skill-card {
-  background: white; padding: 30px; border-radius: 12px; text-align: center;
-  border: 1px solid var(--ui-border); transition: transform 0.3s ease;
-}
-.skill-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-.skill-card i { font-size: 2.5rem; margin-bottom: 15px; }
-@media (min-width: 1024px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
+@keyframes blink { to { visibility: hidden; } }

@@ -1,47 +1,37 @@
 <!doctype html>
 <html lang="ko">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <title>Portfolio - Lab Archive</title>
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/lab.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.js"></script>
-    <script src="js/script.js" defer></script>
-  </head>
-  <body>
-    <header>
-      <div class="logo">MY_PORTFOLIO</div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="lab.html" class="active">Lab</a></li>
-        </ul>
-      </nav>
+    <title>JCJ_SYSTEM | LAB</title>
+    <link rel="stylesheet" href="css/common.css?after" />
+    <link rel="stylesheet" href="css/lab.css?after" />
+</head>
+<body class="crt-frame">
+    <header class="system-header">
+        <span class="system-title">[MODULE: LAB_ARCHIVE_v2.0]</span>
+        <nav>
+            <a href="index.html" class="cmd-btn">--HOME</a>
+            <a href="projects.html" class="cmd-btn">--PROJECTS</a>
+        </nav>
     </header>
 
-    <main>
-      <nav id="sidebar">
-        <div class="sidebar-header">📂 AcornAcademy File</div>
-        <div id="file-list-container"></div>
-      </nav>
+    <main id="lab-container">
+        <nav id="sidebar">
+            <div class="sidebar-label">> DIRECTORY_TREE</div>
+            <div id="file-list-container"></div>
+        </nav>
 
-      <section id="content-area">
-        <div class="tab-bar" id="tab-bar"></div>
-        <div class="viewer-main">
-          <div id="preview-pane">
-            <iframe name="viewer" id="main-iframe"></iframe>
-            <div id="no-selection" class="empty-msg">
-              실습 파일을 선택해 주세요.
+        <section id="content-area">
+            <div class="tab-bar" id="tab-bar"></div>
+            <div class="viewer-main">
+                <div id="preview-pane">
+                    <iframe name="viewer" id="main-iframe"></iframe>
+                    <div id="no-selection" class="empty-msg">> WAITING_FOR_INPUT...</div>
+                </div>
+                <div id="editor-pane"></div>
             </div>
-          </div>
-          <div id="editor-pane"></div>
-        </div>
-      </section>
+        </section>
     </main>
-  </body>
+    <script src="js/system-core.js"></script> 
+</body>
 </html>

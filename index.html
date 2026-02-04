@@ -1,69 +1,42 @@
 <!doctype html>
 <html lang="ko">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <title>Portfolio - About Me</title>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  </head>
-  <body>
+    <title>JCJ_PORTFOLIO_SYSTEM v2.0</title>
+    <link rel="stylesheet" href="css/common.css?after" />
+    <link rel="stylesheet" href="css/index.css?after" />
+</head>
+<body class="crt-frame">
     <div id="intro-overlay">
-      <div class="intro-reveal-layer">
-        <div class="curtain left"></div>
-        <div class="curtain right"></div>
-        <div class="intro-message-box">
-          <p class="intro-sub-text">Stage is Ready</p>
-          <h1 class="intro-main-text">Welcome to my Portfolio</h1>
+        <div class="booting-screen">
+            <div id="boot-log" class="mono-text"></div>
         </div>
-      </div>
     </div>
 
-    <header>
-      <div class="logo">MY_PORTFOLIO</div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="lab.html">Lab</a></li>
-        </ul>
-      </nav>
+    <header class="system-header">
+        <span class="system-title">[PORTFOLIO_SYSTEM_OS v2.0.45] - (c) 2026 JCJ Corp.</span>
     </header>
 
-    <main class="about-container">
-      <section class="profile-section">
-        <div class="profile-image">
-          <div class="image-placeholder">PHOTO</div>
-        </div>
-        <div class="profile-info">
-          <h2 class="intro-title">안녕하세요, 꾸준함으로 성장하는<br /><span>개발자 [정철진]</span>입니다.</h2>
-          <p class="intro-text">
-            <strong>"나는 모르는게 많고 그렇기에 배워야 한다."</strong><br />
-            <strong>"그렇기에 묻고 배우는 것을 부끄러워 하지 않아야 한다"</strong><br />
-            딱 이 두가지 말을 믿고 배우고 노력하고 있습니다. <br />
-            이곳에는 그 노력이 맺은 것들이 담겨있습니다.<br />
-            그리고 앞으로 더 늘어날 것입니다.
-          </p>
-          <ul class="contact-list">
-            <li><i class="fas fa-envelope"></i> mirai3030@naver.com</li>
-            <li><i class="fas fa-phone"></i> 010-8464-6539</li>
-            <li><i class="fab fa-github"></i> <a href="https://github.com/cjfwls39" target="_blank">https://github.com/cjfwls39</a></li>
-          </ul>
-        </div>
-      </section>
+    <main id="terminal-container">
+        <section id="output-area">
+            <div id="ai-response" class="typewriter-text"></div>
+        </section>
 
-      <section class="skills-section">
-        <h3 class="section-subtitle">Technical Skills</h3>
-        <div class="skills-grid">
-          <div class="skill-card"><i class="fab fa-html5" style="color: #e34f26"></i><h4>HTML5</h4></div>
-          <div class="skill-card"><i class="fab fa-css3-alt" style="color: #1572b6"></i><h4>CSS3</h4></div>
-          <div class="skill-card"><i class="fab fa-js" style="color: #f7df1e"></i><h4>JavaScript</h4></div>
-          <div class="skill-card"><i class="fas fa-code" style="color: #2563eb"></i><h4>AWS 서비스</h4></div>
-        </div>
-      </section>
+        <nav class="command-hints">
+            <span class="hint-label">[명령어]:</span>
+            <button onclick="executeCmd('소개')">--소개</button>
+            <button onclick="executeCmd('기술')">--기술</button>
+            <button onclick="executeCmd('연구실')">--연구실</button>
+            <button onclick="executeCmd('프로젝트')">--프로젝트</button>
+        </nav>
+
+        <footer class="input-line">
+            <span class="prompt">admin@jcj:~$</span>
+            <input type="text" id="terminal-input" autofocus spellcheck="false" />
+            <div class="cursor"></div>
+        </footer>
     </main>
 
-    <script src="js/intro.js"></script>
-  </body>
+    <script src="js/ai-engine.js"></script>
+</body>
 </html>
